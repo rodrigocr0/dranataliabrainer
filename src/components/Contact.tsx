@@ -41,7 +41,7 @@ export function Contact() {
       Cal.ns["mojju-discovery-call"]("inline", {
         elementOrSelector:"#my-cal-inline-mojju-discovery-call",
         config: {"layout":"month_view"},
-        calLink: "molku/mojju-discovery-call",
+        calLink: "zqlovable/30min",
       });
       
       Cal.ns["mojju-discovery-call"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});

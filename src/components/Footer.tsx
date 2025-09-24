@@ -121,7 +121,7 @@ export function Footer() {
               © 2025 MOJJU. All rights reserved.
             </div>
             <div className="text-sm text-background/70">
-              651 N. BROAD ST. SUITE 206B MIDDLETOWN 19709, DE, USA
+              2847 HIGHLAND AVE. SUITE 310 BIRMINGHAM 35205, AL, USA
             </div>
           </div>
         </div>
