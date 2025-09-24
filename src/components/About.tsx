@@ -47,7 +47,8 @@ export function About() {
       processSteps.forEach((_, index) => {
         setTimeout(() => {
           setActiveFrame(index)
-        }, index * 9000 + 3000) // Much slower: Start after 3s, then every 9s
+        }, index * 18000 + 6000) // Extremely slow: Start after 6s, then every 18s
+      })
       })
     }, 3000) // 3 second pause after section loads
   }, [])
