@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-const exampleImage = 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&h=600&fit=crop'
+import storyboardImage from '@/assets/storyboard-image.avif'
 
 export function About() {
   const [activeFrame, setActiveFrame] = useState(-1)
@@ -315,7 +315,7 @@ export function About() {
               
               {/* Main gallery image */}
               <img 
-                src={exampleImage} 
+                src={storyboardImage}
                 alt="Collection of AI-generated video content thumbnails showcasing MOJLI's diverse output"
                 className="w-full h-auto rounded-xl"
                 style={{
