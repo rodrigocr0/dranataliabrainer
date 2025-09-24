@@ -47,7 +47,7 @@ export function About() {
       processSteps.forEach((_, index) => {
         setTimeout(() => {
           setActiveFrame(index)
-          console.log("t")
+         
         }, index * 2000 + 1000) // Ultra slow: Start after 24s, then every 72s
       })
     }, 3000) // 3 second pause after section loads
