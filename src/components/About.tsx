@@ -49,7 +49,6 @@ export function About() {
           setActiveFrame(index)
         }, index * 18000 + 6000) // Extremely slow: Start after 6s, then every 18s
       })
-      })
     }, 3000) // 3 second pause after section loads
   }, [])
 
