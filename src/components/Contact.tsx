@@ -41,7 +41,7 @@ export function Contact() {
       Cal.ns["mojju-discovery-call"]("inline", {
         elementOrSelector:"#my-cal-inline-mojju-discovery-call",
         config: {"layout":"month_view"},
-        calLink: "mojli/30min",
+        calLink: "natallia-liashkevich-g3datz/30min",
       });
       
       Cal.ns["mojju-discovery-call"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
