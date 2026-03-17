@@ -8,6 +8,7 @@ export function Hero() {
   const [isMuted, setIsMuted] = useState(true)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isVideoReady, setIsVideoReady] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
 
   // Scroll detection
@@ -21,37 +22,29 @@ export function Hero() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Ensure video is muted immediately on load to prevent any audio
+  // Setup video: wait for canplay, then start playback
   useEffect(() => {
-    if (videoRef.current) {
-      console.log('Video element found, setting up...')
-      videoRef.current.volume = 0
-      videoRef.current.muted = true
-      videoRef.current.defaultMuted = true
-      
-      // Add event listeners for debugging
-      videoRef.current.addEventListener('loadstart', () => console.log('Video: loadstart'))
-      videoRef.current.addEventListener('loadedmetadata', () => console.log('Video: loadedmetadata'))
-      videoRef.current.addEventListener('canplay', () => console.log('Video: canplay'))
-      videoRef.current.addEventListener('playing', () => console.log('Video: playing'))
-      videoRef.current.addEventListener('error', (e) => console.error('Video error:', e))
-      
-      // Force mute on play
-      videoRef.current.addEventListener('play', () => {
-        if (videoRef.current) {
-          console.log('Video play event fired')
-          videoRef.current.muted = isMuted
-          videoRef.current.volume = isMuted ? 0 : 0.7
-        }
-      })
-      
-      // Try to play the video
-      const playPromise = videoRef.current.play()
-      if (playPromise !== undefined) {
-        playPromise
-          .then(() => console.log('Video autoplay successful'))
-          .catch(error => console.error('Video autoplay failed:', error))
-      }
+    const video = videoRef.current
+    if (!video) return
+
+    video.volume = 0
+    video.muted = true
+    video.defaultMuted = true
+
+    const handleCanPlay = () => {
+      setIsVideoReady(true)
+      video.play().catch(err => console.error('Video autoplay failed:', err))
+    }
+
+    video.addEventListener('canplay', handleCanPlay)
+
+    // If already ready (cached)
+    if (video.readyState >= 3) {
+      handleCanPlay()
+    }
+
+    return () => {
+      video.removeEventListener('canplay', handleCanPlay)
     }
   }, [])
 
@@ -98,18 +91,24 @@ export function Hero() {
 
   return (
     <div className="relative h-screen w-full overflow-hidden bg-black">
-      {/* MASSIVE VIDEO - Takes up 95% of space */}
+      {/* Video Background */}
       <video
         ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover scale-110"
-        autoPlay
+        className={`absolute inset-0 w-full h-full object-cover scale-110 transition-opacity duration-1000 ${isVideoReady ? 'opacity-100' : 'opacity-0'}`}
         muted
         loop
         playsInline
+        preload="metadata"
+        poster="/hero-poster.jpg"
       >
         <source src="https://mojli.s3.us-east-2.amazonaws.com/Mojli+Website+upscaled+(12mb).webm" type="video/webm" />
-        Your browser does not support the video tag.
       </video>
+
+      {/* Poster fallback while video loads */}
+      <div 
+        className={`absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ${isVideoReady ? 'opacity-0' : 'opacity-100'}`}
+        style={{ backgroundImage: 'url(/hero-poster.jpg)' }}
+      />
 
       {/* Full-Width Navbar */}
       <motion.nav
