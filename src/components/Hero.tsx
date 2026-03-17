@@ -8,6 +8,7 @@ export function Hero() {
   const [isMuted, setIsMuted] = useState(true)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isVideoReady, setIsVideoReady] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
 
   // Scroll detection
