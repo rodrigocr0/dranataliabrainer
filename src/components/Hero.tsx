@@ -91,18 +91,24 @@ export function Hero() {
 
   return (
     <div className="relative h-screen w-full overflow-hidden bg-black">
-      {/* MASSIVE VIDEO - Takes up 95% of space */}
+      {/* Video Background */}
       <video
         ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover scale-110"
-        autoPlay
+        className={`absolute inset-0 w-full h-full object-cover scale-110 transition-opacity duration-1000 ${isVideoReady ? 'opacity-100' : 'opacity-0'}`}
         muted
         loop
         playsInline
+        preload="metadata"
+        poster="/hero-poster.jpg"
       >
         <source src="https://mojli.s3.us-east-2.amazonaws.com/Mojli+Website+upscaled+(12mb).webm" type="video/webm" />
-        Your browser does not support the video tag.
       </video>
+
+      {/* Poster fallback while video loads */}
+      <div 
+        className={`absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ${isVideoReady ? 'opacity-0' : 'opacity-100'}`}
+        style={{ backgroundImage: 'url(/hero-poster.jpg)' }}
+      />
 
       {/* Full-Width Navbar */}
       <motion.nav
