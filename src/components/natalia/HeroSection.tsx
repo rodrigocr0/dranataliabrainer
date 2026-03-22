@@ -85,11 +85,11 @@ export function HeroSection() {
               </span>
             </motion.div>
 
-            <h1 className="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] text-white mb-3 drop-shadow-lg">
-              Sorriso impecável <span className="text-gold">sem aparelho metálico</span>
+            <h1 className="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] text-white mb-3 drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]">
+              Sorriso impecável <span className="text-gold drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)]">sem aparelho metálico</span>
             </h1>
 
-            <p className="font-body text-sm sm:text-lg text-gray-200 mb-5 max-w-xl mx-auto lg:mx-0 leading-relaxed drop-shadow-md">
+            <p className="font-body text-sm sm:text-lg text-white/95 mb-5 max-w-xl mx-auto lg:mx-0 leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
               O alinhador invisível para quem valoriza a própria imagem. Tecnologia de ponta e maestria clínica para transformar seu sorriso de forma elegante e discreta.
             </p>
 
