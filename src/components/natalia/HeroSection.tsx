@@ -11,7 +11,11 @@ export function HeroSection() {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
 
+  const [isAutoAnimating, setIsAutoAnimating] = useState(false)
+
   const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // If user interacts, stop auto animation or ensure it's responsive
+    setIsAutoAnimating(false)
     setSliderPos(Number(e.target.value))
   }
 
@@ -28,6 +32,7 @@ export function HeroSection() {
     // Initial automatic animation for the before/after slider
     // Starts after a short delay for better impact
     const timer = setTimeout(() => {
+      setIsAutoAnimating(true)
       const sequence = [20, 80, 20, 80, 50];
       let index = 0;
       
@@ -37,10 +42,14 @@ export function HeroSection() {
           index++;
         } else {
           clearInterval(interval);
+          setIsAutoAnimating(false)
         }
       }, 700); // Speed of the intro animation
       
-      return () => clearInterval(interval);
+      return () => {
+        clearInterval(interval);
+        setIsAutoAnimating(false)
+      }
     }, 2000);
 
     return () => clearTimeout(timer);
@@ -145,7 +154,7 @@ export function HeroSection() {
 
               {/* Before Image (Foreground, clipped) */}
               <div
-                className="absolute inset-0 w-full h-full overflow-hidden transition-all duration-700 ease-in-out"
+                className={`absolute inset-0 w-full h-full overflow-hidden ${isAutoAnimating ? 'transition-all duration-700 ease-in-out' : ''}`}
                 style={{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }}
               >
                 <img
@@ -157,7 +166,7 @@ export function HeroSection() {
 
               {/* Slider Line */}
               <div
-                className="absolute inset-y-0 w-1 bg-white cursor-ew-resize z-20 pointer-events-none shadow-[0_0_10px_rgba(0,0,0,0.3)] transition-all duration-700 ease-in-out"
+                className={`absolute inset-y-0 w-1 bg-white cursor-ew-resize z-20 pointer-events-none shadow-[0_0_10px_rgba(0,0,0,0.3)] ${isAutoAnimating ? 'transition-all duration-700 ease-in-out' : ''}`}
                 style={{ left: `${sliderPos}%` }}
               >
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 bg-white border-2 border-gold rounded-full flex items-center justify-center shadow-lg">
