@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
-import { Diamond, Menu, X } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import logoImg from '../../assets/logo.webp'
 
 const links = [
   { label: 'Vantagens', href: '#vantagens' },
@@ -37,8 +38,7 @@ export function Navbar() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 lg:h-20">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          <Diamond className="w-5 h-5 text-gold" />
-          <span className="font-display text-lg font-bold text-foreground">Dra. Natalia</span>
+          <img src={logoImg} alt="Dra. Natalia Brainer" className="h-8 md:h-10 w-auto object-contain" />
         </a>
 
         {/* Desktop links */}
