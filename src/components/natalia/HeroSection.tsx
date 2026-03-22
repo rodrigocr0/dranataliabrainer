@@ -1,9 +1,18 @@
 import { motion } from 'framer-motion'
 import { Diamond } from 'lucide-react'
+import React, { useState } from 'react'
+import antesImg from '../../assets/antes-hero.webp'
+import depoisImg from '../../assets/depois-hero.webp'
 
 export function HeroSection() {
+  const [sliderPos, setSliderPos] = useState(50)
+
   const scrollToContact = () => {
     document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSliderPos(Number(e.target.value))
   }
 
   return (
@@ -55,25 +64,66 @@ export function HeroSection() {
             </motion.button>
           </motion.div>
 
-          {/* Image placeholder */}
+          {/* Before/After Slider */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="order-1 lg:order-2 flex justify-center"
           >
-            <div className="relative w-72 h-96 sm:w-80 sm:h-[28rem] lg:w-96 lg:h-[32rem] rounded-2xl overflow-hidden shadow-2xl">
-              <div className="absolute inset-0 bg-gradient-to-br from-beige to-beige-dark flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gold/20 flex items-center justify-center">
-                    <Diamond className="w-10 h-10 text-gold" />
+            <div className="relative w-full aspect-[4/5] max-w-md bg-beige rounded-2xl overflow-hidden shadow-2xl group select-none">
+              {/* After Image (Background) */}
+              <img
+                src={depoisImg}
+                alt="Depois"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+
+              {/* Before Image (Foreground, clipped) */}
+              <div
+                className="absolute inset-0 w-full h-full overflow-hidden"
+                style={{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }}
+              >
+                <img
+                  src={antesImg}
+                  alt="Antes"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Slider Line */}
+              <div
+                className="absolute inset-y-0 w-1 bg-white cursor-ew-resize z-20 pointer-events-none shadow-[0_0_10px_rgba(0,0,0,0.3)]"
+                style={{ left: `${sliderPos}%` }}
+              >
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white border-2 border-gold rounded-full flex items-center justify-center shadow-lg">
+                  <div className="flex gap-1">
+                    <div className="w-1 h-4 bg-gold/40 rounded-full" />
+                    <div className="w-1 h-4 bg-gold rounded-full" />
                   </div>
-                  <p className="font-display text-xl font-semibold text-foreground">Dra. Natalia Brainer</p>
-                  <p className="font-body text-sm text-muted-foreground mt-2">Foto profissional aqui</p>
                 </div>
               </div>
+
+              {/* Slider Input */}
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value={sliderPos}
+                onChange={handleSliderChange}
+                className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-30 appearance-none"
+              />
+
+              {/* Labels */}
+              <div className="absolute bottom-4 left-4 z-10 pointer-events-none">
+                <span className="bg-black/40 text-white text-xs px-2 py-1 rounded backdrop-blur-sm font-body tracking-wider">ANTES</span>
+              </div>
+              <div className="absolute bottom-4 right-4 z-10 pointer-events-none">
+                <span className="bg-gold/80 text-white text-xs px-2 py-1 rounded backdrop-blur-sm font-body tracking-wider">DEPOIS</span>
+              </div>
+
               {/* Gold accent border */}
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-gold-dark via-gold to-gold-light" />
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-gold-dark via-gold to-gold-light z-40" />
             </div>
           </motion.div>
         </div>
