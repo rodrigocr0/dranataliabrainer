@@ -95,14 +95,15 @@ export function HeroSection() {
             className="order-2 lg:order-1 text-center lg:text-left flex flex-col justify-center"
           >
             {/* Badge */}
+            {/* Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="inline-flex items-center gap-2 bg-gold/20 border border-gold/40 rounded-full px-3 py-1 mb-3 self-center lg:self-start w-fit backdrop-blur-sm"
+              className="inline-flex items-center gap-2 bg-white border border-gold/40 rounded-full px-3 py-1 mb-3 self-center lg:self-start w-fit shadow-md"
             >
-              <Diamond className="w-3.5 h-3.5 text-gold" />
-              <span className="text-[10px] sm:text-xs font-body font-semibold text-gold tracking-wide">
+              <Diamond className="w-3.5 h-3.5 text-gold-dark" />
+              <span className="text-[10px] sm:text-xs font-body font-semibold text-gold-dark tracking-wide">
                 Invisalign Top Doctor Diamond
               </span>
             </motion.div>
@@ -121,7 +122,7 @@ export function HeroSection() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="btn-gold text-base sm:text-lg px-6 py-3 sm:px-8 sm:py-3.5 rounded-lg cursor-pointer font-body inline-block self-center lg:self-start transition-all shadow-xl"
+              className="btn-gold !text-white text-base sm:text-lg px-6 py-3 sm:px-8 sm:py-3.5 rounded-lg cursor-pointer font-body inline-block self-center lg:self-start transition-all shadow-xl"
             >
               Quero me avaliar agora
             </motion.a>
@@ -179,7 +180,7 @@ export function HeroSection() {
 
               {/* Badges and Labels */}
               <div className="absolute top-4 right-4 z-40 pointer-events-none">
-                <span className="bg-gold text-white text-[9px] sm:text-xs font-bold px-2.5 py-1 rounded-full shadow-lg border border-white/20 tracking-tighter uppercase whitespace-nowrap">
+                <span className="bg-gold text-white text-[10px] sm:text-sm font-bold px-3 py-1.5 rounded-full shadow-lg border border-white/20 tracking-tighter uppercase whitespace-nowrap">
                   Resultado em 6 meses
                 </span>
               </div>
@@ -188,7 +189,7 @@ export function HeroSection() {
                 <span className="bg-black/40 text-white text-[9px] sm:text-xs px-2 py-0.5 rounded backdrop-blur-sm font-body tracking-wider uppercase">ANTES</span>
               </div>
               <div className="absolute bottom-4 right-4 z-10 pointer-events-none">
-                <span className="bg-gold/80 text-white text-[9px] sm:text-xs px-2 py-0.5 rounded backdrop-blur-sm font-body tracking-wider uppercase">DEPOIS</span>
+                <span className="bg-black/40 text-white text-[9px] sm:text-xs px-2 py-0.5 rounded backdrop-blur-sm font-body tracking-wider uppercase">DEPOIS</span>
               </div>
 
               {/* Gold accent border */}
@@ -198,5 +199,6 @@ export function HeroSection() {
         </div>
       </div>
     </section>
+
   )
 }
