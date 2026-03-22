@@ -2,11 +2,11 @@ import { motion } from 'framer-motion'
 import { Diamond, Award, Users, ShieldCheck, GraduationCap } from 'lucide-react'
 
 const items = [
-  { icon: Diamond, label: 'Invisalign Top Doctor Diamond', desc: 'Certificação de excelência internacional' },
-  { icon: GraduationCap, label: '+12 anos de especialização', desc: 'Em ortodontia e Invisalign' },
-  { icon: Users, label: '+500 sorrisos transformados', desc: 'Pacientes satisfeitos em Fortaleza' },
-  { icon: Award, label: 'Reconhecimento profissional', desc: 'Referência em ortodontia premium' },
-  { icon: ShieldCheck, label: 'CFO e Associações', desc: 'Filiada às principais entidades odontológicas' },
+  { icon: Diamond, label: 'Invisalign Top Doctor Diamond', desc: 'Nível máximo de certificação e excelência internacional' },
+  { icon: GraduationCap, label: '+18 anos de expertise', desc: 'Sólida experiência em ortodontia de alta complexidade' },
+  { icon: Users, label: '+500 casos tratados', desc: 'Referência em transformações de sorrisos em Fortaleza' },
+  { icon: Award, label: 'Tecnologia iTero', desc: 'Escaneamento 3D rápido para máxima previsibilidade' },
+  { icon: ShieldCheck, label: 'Atendimento Concierge', desc: 'Foco total no conforto do paciente executivo' },
 ]
 
 export function TrustSection() {

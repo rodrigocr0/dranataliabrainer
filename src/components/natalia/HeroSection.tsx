@@ -42,7 +42,7 @@ export function HeroSection() {
             </h1>
 
             <p className="font-body text-lg sm:text-xl text-muted-foreground mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              Invisalign para executivas e profissionais que não abrem mão de qualidade.
+              O alinhador invisível para quem lidera. Tecnologia de ponta e maestria clínica para transformar seu sorriso sem comprometer sua agenda ou imagem profissional.
             </p>
 
             <motion.button
@@ -51,7 +51,7 @@ export function HeroSection() {
               onClick={scrollToContact}
               className="btn-gold text-lg px-10 py-4 rounded-lg cursor-pointer font-body"
             >
-              Agende sua Avaliação Gratuita
+              Agende sua Avaliação Prime
             </motion.button>
           </motion.div>
 

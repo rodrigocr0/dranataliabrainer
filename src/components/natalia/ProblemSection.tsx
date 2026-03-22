@@ -4,18 +4,18 @@ import { Eye, Clock, Sparkles } from 'lucide-react'
 const cards = [
   {
     icon: Eye,
-    title: 'Discrição',
-    description: 'Ninguém vai notar que você está em tratamento. Perfeito para reuniões e apresentações.',
+    title: 'Discrição Absoluta',
+    description: 'Mantenha sua autoridade intacta em reuniões e apresentações. O Invisalign é virtualmente imperceptível, eliminando o estigma dos aparelhos metálicos no ambiente corporativo.',
   },
   {
     icon: Clock,
-    title: 'Conveniência',
-    description: 'Menos consultas, mais liberdade. Remova para comer e higienizar.',
+    title: 'Agenda Corporativa',
+    description: 'Menos tempo no dentista, mais tempo na sua empresa. Consultas espaçadas a cada 6-8 semanas, ideais para rotinas intensas e viagens de negócios.',
   },
   {
     icon: Sparkles,
-    title: 'Resultados',
-    description: 'Transformação visível em 6-12 meses. Sorriso profissional garantido.',
+    title: 'Maestria Diamond',
+    description: 'Transformação planejada por uma Invisalign Top Doctor Diamond. Previsibilidade digital que garante um sorriso impecável com o mínimo de intervenções.',
   },
 ]
 

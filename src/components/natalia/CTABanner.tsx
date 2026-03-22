@@ -10,7 +10,7 @@ export function CTABanner() {
           viewport={{ once: true }}
         >
           <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            Agende sua avaliação gratuita hoje
+            Agende sua Avaliação Prime hoje
           </h2>
           <p className="font-body text-foreground/80 mb-8 max-w-lg mx-auto">
             Descubra como o Invisalign pode transformar seu sorriso sem afetar sua rotina profissional.
