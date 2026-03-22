@@ -24,6 +24,28 @@ export function HeroSection() {
     }
   }
 
+  useEffect(() => {
+    // Initial automatic animation for the before/after slider
+    // Starts after a short delay for better impact
+    const timer = setTimeout(() => {
+      const sequence = [20, 80, 20, 80, 50];
+      let index = 0;
+      
+      const interval = setInterval(() => {
+        if (index < sequence.length) {
+          setSliderPos(sequence[index]);
+          index++;
+        } else {
+          clearInterval(interval);
+        }
+      }, 700); // Speed of the intro animation
+      
+      return () => clearInterval(interval);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const whatsappUrl = "https://api.whatsapp.com/send?phone=5585988991505"
 
   return (
@@ -122,7 +144,7 @@ export function HeroSection() {
 
               {/* Before Image (Foreground, clipped) */}
               <div
-                className="absolute inset-0 w-full h-full overflow-hidden"
+                className="absolute inset-0 w-full h-full overflow-hidden transition-all duration-700 ease-in-out"
                 style={{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }}
               >
                 <img
@@ -134,7 +156,7 @@ export function HeroSection() {
 
               {/* Slider Line */}
               <div
-                className="absolute inset-y-0 w-1 bg-white cursor-ew-resize z-20 pointer-events-none shadow-[0_0_10px_rgba(0,0,0,0.3)]"
+                className="absolute inset-y-0 w-1 bg-white cursor-ew-resize z-20 pointer-events-none shadow-[0_0_10px_rgba(0,0,0,0.3)] transition-all duration-700 ease-in-out"
                 style={{ left: `${sliderPos}%` }}
               >
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 bg-white border-2 border-gold rounded-full flex items-center justify-center shadow-lg">
