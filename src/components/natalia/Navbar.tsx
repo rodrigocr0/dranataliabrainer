@@ -38,7 +38,7 @@ export function Navbar() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 lg:h-20">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          <img src={logoImg} alt="Dra. Natalia Brainer" className="h-8 md:h-10 w-auto object-contain" />
+          <img src={logoImg} alt="Dra. Natalia Brainer" className="h-10 md:h-14 w-auto object-contain" />
         </a>
 
         {/* Desktop links */}
