@@ -16,7 +16,7 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 300)
+    const onScroll = () => setIsScrolled(window.scrollY > 500)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -28,14 +28,14 @@ export function Navbar() {
 
   return (
     <motion.nav
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-white/85 backdrop-blur-md shadow-sm border-b border-border ${
-        isScrolled 
-          ? 'opacity-100 translate-y-0 pointer-events-auto' 
-          : 'opacity-0 -translate-y-full pointer-events-none'
-      }`}
+      initial={false}
+      animate={{ 
+        opacity: isScrolled ? 1 : 0,
+        y: isScrolled ? 0 : -80
+      }}
+      transition={{ duration: 0.5, ease: 'easeInOut' }}
+      className="fixed top-0 left-0 right-0 z-50 bg-white/85 backdrop-blur-md shadow-sm border-b border-border pointer-events-auto"
+      style={{ pointerEvents: isScrolled ? 'auto' : 'none' }}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 lg:h-18">
         {/* Logo */}
