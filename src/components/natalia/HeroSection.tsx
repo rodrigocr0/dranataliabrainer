@@ -46,12 +46,11 @@ export function HeroSection() {
             </motion.div>
 
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] text-foreground mb-6">
-              Sorriso Profissional.{' '}
-              <span className="text-gold">Sem Aparelho Metálico.</span>
+              Sorriso impecável <span className="text-gold">sem aparelho metálico</span>
             </h1>
 
             <p className="font-body text-lg sm:text-xl text-muted-foreground mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              O alinhador invisível para quem lidera. Tecnologia de ponta e maestria clínica para transformar seu sorriso sem comprometer sua agenda ou imagem profissional.
+              O alinhador invisível para quem valoriza a própria imagem. Tecnologia de ponta e maestria clínica para transformar seu sorriso de forma elegante e discreta.
             </p>
 
             <motion.button
@@ -60,7 +59,7 @@ export function HeroSection() {
               onClick={scrollToContact}
               className="btn-gold text-lg px-10 py-4 rounded-lg cursor-pointer font-body"
             >
-              Agende sua Avaliação Prime
+              Quero me avaliar agora
             </motion.button>
           </motion.div>
 
@@ -71,7 +70,7 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="order-1 lg:order-2 flex justify-center"
           >
-            <div className="relative w-full aspect-[4/5] max-w-md bg-beige rounded-2xl overflow-hidden shadow-2xl group select-none">
+            <div className="relative w-full aspect-[4/5] max-w-md bg-beige rounded-2xl overflow-hidden shadow-2xl group select-none border-4 border-white/50">
               {/* After Image (Background) */}
               <img
                 src={depoisImg}
@@ -114,12 +113,18 @@ export function HeroSection() {
                 className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-30 appearance-none"
               />
 
-              {/* Labels */}
+              {/* Badges and Labels */}
+              <div className="absolute top-4 right-4 z-40 pointer-events-none">
+                <span className="bg-gold text-white text-[10px] sm:text-xs font-bold px-3 py-1.5 rounded-full shadow-lg border border-white/20 tracking-tighter uppercase whitespace-nowrap">
+                  Resultado em 6 meses
+                </span>
+              </div>
+
               <div className="absolute bottom-4 left-4 z-10 pointer-events-none">
-                <span className="bg-black/40 text-white text-xs px-2 py-1 rounded backdrop-blur-sm font-body tracking-wider">ANTES</span>
+                <span className="bg-black/40 text-white text-[10px] sm:text-xs px-2 py-1 rounded backdrop-blur-sm font-body tracking-wider uppercase">ANTES</span>
               </div>
               <div className="absolute bottom-4 right-4 z-10 pointer-events-none">
-                <span className="bg-gold/80 text-white text-xs px-2 py-1 rounded backdrop-blur-sm font-body tracking-wider">DEPOIS</span>
+                <span className="bg-gold/80 text-white text-[10px] sm:text-xs px-2 py-1 rounded backdrop-blur-sm font-body tracking-wider uppercase">DEPOIS</span>
               </div>
 
               {/* Gold accent border */}
