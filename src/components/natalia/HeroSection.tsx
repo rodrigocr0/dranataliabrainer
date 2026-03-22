@@ -122,7 +122,7 @@ export function HeroSection() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="btn-gold !text-white text-base sm:text-lg px-8 py-4 sm:px-10 sm:py-5 rounded-lg cursor-pointer font-bold inline-block self-center lg:self-start transition-all shadow-xl drop-shadow-sm tracking-wide"
+              className="btn-green text-base sm:text-lg px-8 py-4 sm:px-10 sm:py-5 rounded-lg cursor-pointer font-bold inline-block self-center lg:self-start transition-all shadow-xl tracking-wide"
             >
               Quero me avaliar agora
             </motion.a>
