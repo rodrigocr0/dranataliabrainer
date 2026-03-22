@@ -1,27 +1,69 @@
 import { motion } from 'framer-motion'
 import { Diamond } from 'lucide-react'
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import antesImg from '../../assets/antes-hero.webp'
 import depoisImg from '../../assets/depois-hero.webp'
+import videoSource from '../../assets/video-fundo-comp.mp4'
+import videoPoster from '../../assets/video-fundo-hero-cover.webp'
 
 export function HeroSection() {
   const [sliderPos, setSliderPos] = useState(50)
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSliderPos(Number(e.target.value))
   }
 
+  const handleVideoCanPlayThrough = () => {
+    setIsVideoLoaded(true)
+    if (videoRef.current) {
+      videoRef.current.play().catch(error => {
+        console.error("Video play failed:", error)
+      })
+    }
+  }
+
   const whatsappUrl = "https://api.whatsapp.com/send?phone=5585988991505"
 
   return (
-    <section className="relative h-screen min-h-[600px] flex items-center bg-gradient-to-b from-background to-beige overflow-hidden">
+    <section className="relative h-screen min-h-[600px] flex items-center overflow-hidden bg-black">
+      {/* Video Background */}
+      <div className="absolute inset-0 w-full h-full z-0">
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={videoPoster}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+            isVideoLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
+          onCanPlayThrough={handleVideoCanPlayThrough}
+        >
+          <source src={videoSource} type="video/mp4" />
+        </video>
+        
+        {/* Placeholder/Poster while loading or if video fails */}
+        {!isVideoLoaded && (
+          <div 
+            className="absolute inset-0 w-full h-full bg-cover bg-center"
+            style={{ backgroundImage: `url(${videoPoster})` }}
+          />
+        )}
+
+        {/* Overlay for Contrast */}
+        <div className="absolute inset-0 bg-black/50 z-10" />
+      </div>
+
       {/* Decorative elements */}
-      <div className="absolute top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none">
+      <div className="absolute top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none z-20">
         <div className="absolute top-20 right-20 w-64 h-64 rounded-full border border-gold" />
         <div className="absolute bottom-40 right-40 w-96 h-96 rounded-full border border-gold" />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-16 lg:pt-20 pb-4">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-16 lg:pt-20 pb-4 relative z-20">
         <div className="grid lg:grid-cols-2 gap-4 lg:gap-16 items-center">
           {/* Text Content */}
           <motion.div
@@ -35,19 +77,19 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="inline-flex items-center gap-2 bg-gold/10 border border-gold/30 rounded-full px-3 py-1 mb-3 self-center lg:self-start w-fit"
+              className="inline-flex items-center gap-2 bg-gold/20 border border-gold/40 rounded-full px-3 py-1 mb-3 self-center lg:self-start w-fit backdrop-blur-sm"
             >
               <Diamond className="w-3.5 h-3.5 text-gold" />
-              <span className="text-[10px] sm:text-xs font-body font-semibold text-gold-dark tracking-wide">
+              <span className="text-[10px] sm:text-xs font-body font-semibold text-gold tracking-wide">
                 Invisalign Top Doctor Diamond
               </span>
             </motion.div>
 
-            <h1 className="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] text-foreground mb-3">
+            <h1 className="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] text-white mb-3 drop-shadow-lg">
               Sorriso impecável <span className="text-gold">sem aparelho metálico</span>
             </h1>
 
-            <p className="font-body text-sm sm:text-lg text-muted-foreground mb-5 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            <p className="font-body text-sm sm:text-lg text-gray-200 mb-5 max-w-xl mx-auto lg:mx-0 leading-relaxed drop-shadow-md">
               O alinhador invisível para quem valoriza a própria imagem. Tecnologia de ponta e maestria clínica para transformar seu sorriso de forma elegante e discreta.
             </p>
 
@@ -57,7 +99,7 @@ export function HeroSection() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="btn-gold text-base sm:text-lg px-6 py-3 sm:px-8 sm:py-3.5 rounded-lg cursor-pointer font-body inline-block self-center lg:self-start transition-all"
+              className="btn-gold text-base sm:text-lg px-6 py-3 sm:px-8 sm:py-3.5 rounded-lg cursor-pointer font-body inline-block self-center lg:self-start transition-all shadow-xl"
             >
               Quero me avaliar agora
             </motion.a>
@@ -70,7 +112,7 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="order-1 lg:order-2 flex justify-center"
           >
-            <div className="relative w-full aspect-square max-w-[260px] sm:max-w-sm lg:max-w-md bg-beige rounded-2xl overflow-hidden shadow-2xl group select-none border-4 border-white/50">
+            <div className="relative w-full aspect-square max-w-[260px] sm:max-w-sm lg:max-w-md bg-beige/10 rounded-2xl overflow-hidden shadow-2xl group select-none border-4 border-white/30 backdrop-blur-sm">
               {/* After Image (Background) */}
               <img
                 src={depoisImg}
