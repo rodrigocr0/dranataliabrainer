@@ -41,7 +41,7 @@ export function CTABanner() {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="btn-gold inline-flex items-center justify-center px-10 py-5 rounded-full text-white font-bold text-lg shadow-[0_10px_30px_rgba(212,175,55,0.3)] transition-all"
+            className="btn-gold inline-flex items-center justify-center px-10 py-5 rounded-full !text-white font-bold text-lg shadow-[0_10px_30px_rgba(212,175,55,0.3)] transition-all"
           >
             Quero Agendar Minha Consulta
           </motion.a>
