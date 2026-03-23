@@ -151,7 +151,7 @@ export function HeroSection() {
               )}
             </AnimatePresence>
 
-            <div className="relative w-full aspect-square max-w-[240px] sm:max-w-md bg-black/20 rounded-[2.5rem] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.5)] group select-none border-[4px] border-gold ring-2 ring-white/10">
+            <div className="relative w-full aspect-square max-w-[240px] sm:max-w-md bg-black/20 rounded-[2.5rem] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.5)] group select-none border-[3px] border-white/20 ring-1 ring-gold/40">
               {/* After Image */}
               <img
                 src={depoisImg}
