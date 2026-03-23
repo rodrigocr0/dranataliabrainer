@@ -115,10 +115,8 @@ export function FooterSection() {
             <img 
               src={logoImg} 
               alt="Dra. Natalia Brainer" 
-              className="h-9 opacity-90" 
+              className="h-9 w-auto object-contain opacity-90" 
               loading="lazy"
-              width={144}
-              height={36}
             />
             <p className="font-body text-[9px] text-white/20 uppercase tracking-[0.25em]">
               Copyright &copy; {currentYear} — Dra. Natalia Brainer. Todos os direitos reservados.

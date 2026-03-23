@@ -205,9 +205,7 @@ export function HeroSection() {
               <img 
                 src={logoImg} 
                 alt="Dra. Natalia Brainer" 
-                className="h-12 sm:h-14 opacity-95 mx-auto"
-                width={200}
-                height={50}
+                className="h-12 sm:h-14 w-auto object-contain opacity-95 mx-auto"
                 fetchPriority="high"
               />
             </div>
@@ -282,9 +280,7 @@ export function HeroSection() {
               <img 
                 src={logoImg} 
                 alt="Dra. Natalia Brainer" 
-                className="h-16 lg:h-20 opacity-100" 
-                width={300}
-                height={80}
+                className="h-16 lg:h-20 w-auto object-contain opacity-100" 
                 fetchPriority="high"
               />
             </motion.div>
