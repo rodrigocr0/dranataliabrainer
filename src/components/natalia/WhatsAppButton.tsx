@@ -19,11 +19,19 @@ export function WhatsAppButton() {
       />
       
       <motion.a
-        href="https://wa.me/5585988991505?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o."
+        href="https://wa.me/5585988991505?text=Olá! Gostaria de agendar uma avaliação."
         target="_blank"
         rel="noopener noreferrer"
         className="relative bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-shadow cursor-pointer flex items-center justify-center"
-        whileHover={{ scale: 1.1 }}
+        animate={{ 
+          scale: [1, 1.08, 1],
+        }}
+        transition={{ 
+          duration: 3, 
+          repeat: Infinity, 
+          ease: "easeInOut" 
+        }}
+        whileHover={{ scale: 1.15 }}
         whileTap={{ scale: 0.9 }}
         aria-label="Fale conosco pelo WhatsApp"
       >

@@ -71,9 +71,14 @@ export function FAQSection() {
                 <p className="font-body text-muted-foreground text-base sm:text-lg leading-relaxed mb-6">
                   {faq.a}
                 </p>
-                <div className="mt-auto flex items-center gap-2 text-gold font-body text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <a 
+                  href="https://api.whatsapp.com/send?phone=5585988991505"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-auto flex items-center gap-2 text-gold font-body text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-500 hover:gap-3"
+                >
                   Saiba mais <ChevronRight className="w-4 h-4" />
-                </div>
+                </a>
               </div>
             </motion.div>
           ))}
