@@ -3,7 +3,10 @@ import { Diamond } from 'lucide-react'
 
 export function SectionDivider() {
   return (
-    <div className="relative h-px w-full bg-gradient-to-r from-transparent via-gold/50 to-transparent z-30">
+    <div className="relative h-px w-full bg-gradient-to-r from-transparent via-gold/40 to-transparent z-30">
+      {/* Discreet Shadow Transition */}
+      <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[150px] bg-gradient-to-b from-transparent via-black/20 to-transparent -z-20 pointer-events-none" />
+      
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
@@ -15,8 +18,8 @@ export function SectionDivider() {
         </motion.div>
       </div>
       
-      {/* Glow effect */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl h-[1px] bg-gold/20 blur-sm -z-10" />
+      {/* Glow effect for the line */}
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl h-[1px] bg-gold/10 blur-sm -z-10" />
     </div>
   )
 }
