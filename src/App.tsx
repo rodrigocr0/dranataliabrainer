@@ -5,6 +5,7 @@ import { BeforeAfterSection } from './components/natalia/BeforeAfterSection'
 import { ComparisonSection } from './components/natalia/ComparisonSection'
 import { ProcessSection } from './components/natalia/ProcessSection'
 import { FAQSection } from './components/natalia/FAQSection'
+import { GoogleReviewsSection } from './components/natalia/GoogleReviewsSection'
 import { TrustSection } from './components/natalia/TrustSection'
 import { ContactForm } from './components/natalia/ContactForm'
 import { FooterSection } from './components/natalia/FooterSection'
@@ -39,6 +40,7 @@ export default function App() {
         <section id="processo" aria-label="Processo">
           <ProcessSection />
         </section>
+        <GoogleReviewsSection />
         <section id="duvidas" aria-label="Dúvidas">
           <FAQSection />
         </section>
