@@ -29,9 +29,9 @@ export function BeforeAfterSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-gold font-body font-semibold tracking-widest uppercase text-xs sm:text-sm mb-3 block">Galeria de Resultados</span>
+          <span className="text-gold font-body font-semibold tracking-widest uppercase text-xs sm:text-sm mb-3 block">Sorrisos transformados sem dor</span>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">
-            Transformações <span className="text-gold">Reais</span>
+            Veja alguns sorrisos que já transformamos
           </h2>
         </motion.div>
 
