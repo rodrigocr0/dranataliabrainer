@@ -8,10 +8,26 @@ export function CTABanner() {
   const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(error => {
+    const video = videoRef.current
+    if (!video) return
+
+    video.defaultMuted = true
+    video.muted = true
+    
+    const playVideo = () => {
+      video.play().catch(error => {
         console.error("CTA Video play failed:", error)
       })
+    }
+
+    if (video.readyState >= 3) {
+      playVideo()
+    } else {
+      video.addEventListener('canplay', playVideo)
+    }
+
+    return () => {
+      video.removeEventListener('canplay', playVideo)
     }
   }, [])
 
@@ -25,6 +41,7 @@ export function CTABanner() {
           muted
           loop
           playsInline
+          defaultMuted
           poster={videoPoster}
           className="w-full h-full object-cover"
         >

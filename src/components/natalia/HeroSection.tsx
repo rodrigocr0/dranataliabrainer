@@ -28,13 +28,32 @@ export function HeroSection() {
     setSliderPos(Number(e.target.value))
   }
 
-  const handleVideoCanPlayThrough = () => {
-    setIsVideoLoaded(true)
-    if (videoRef.current) {
-      videoRef.current.play().catch(error => {
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    video.defaultMuted = true
+    video.muted = true
+    
+    const playVideo = () => {
+      video.play().catch(error => {
         console.error("Video play failed:", error)
       })
     }
+
+    if (video.readyState >= 3) {
+      playVideo()
+    } else {
+      video.addEventListener('canplay', playVideo)
+    }
+
+    return () => {
+      video.removeEventListener('canplay', playVideo)
+    }
+  }, [])
+
+  const handleVideoCanPlayThrough = () => {
+    setIsVideoLoaded(true)
   }
 
   useEffect(() => {
@@ -135,6 +154,7 @@ export function HeroSection() {
           muted
           loop
           playsInline
+          defaultMuted
           poster={videoPoster}
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
             isVideoLoaded ? 'opacity-100' : 'opacity-0'
