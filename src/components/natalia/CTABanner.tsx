@@ -1,13 +1,6 @@
+import { motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import videoPoster from '../../assets/tela-preload.webp'
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'wistia-player': any;
-    }
-  }
-}
 
 export function CTABanner() {
   const whatsappUrl = "https://api.whatsapp.com/send?phone=5585988991505"
