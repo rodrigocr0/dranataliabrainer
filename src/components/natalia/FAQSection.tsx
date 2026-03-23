@@ -1,10 +1,4 @@
 import { motion } from 'framer-motion'
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion'
 
 const faqs = [
   {
@@ -52,23 +46,28 @@ export function FAQSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          className="space-y-10"
         >
-          <Accordion type="single" collapsible className="space-y-3">
-            {faqs.map((faq, i) => (
-              <AccordionItem
-                key={i}
-                value={`faq-${i}`}
-                className="border border-border rounded-lg px-6 bg-cream data-[state=open]:border-gold/30"
-              >
-                <AccordionTrigger className="font-body font-semibold text-foreground text-left hover:no-underline py-5">
-                  {faq.q}
-                </AccordionTrigger>
-                <AccordionContent className="font-body text-muted-foreground pb-5 leading-relaxed">
-                  {faq.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+          {faqs.map((faq, i) => (
+            <div key={i} className="group transition-all duration-300">
+              <div className="flex gap-4 sm:gap-6">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold font-bold font-display text-lg">
+                  {i + 1}
+                </div>
+                <div>
+                  <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground mb-3 group-hover:text-gold transition-colors duration-300">
+                    {faq.q}
+                  </h3>
+                  <p className="font-body text-muted-foreground text-lg leading-relaxed max-w-2xl">
+                    {faq.a}
+                  </p>
+                </div>
+              </div>
+              {i < faqs.length - 1 && (
+                <div className="mt-10 h-px w-full bg-gradient-to-r from-gold/20 via-gold/10 to-transparent" />
+              )}
+            </div>
+          ))}
         </motion.div>
       </div>
     </section>

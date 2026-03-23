@@ -29,6 +29,9 @@ export default function App() {
         <section id="vantagens" aria-label="Vantagens">
           <ProblemSection />
         </section>
+        <section id="credibilidade" aria-label="Credibilidade">
+          <TrustSection />
+        </section>
         <CTABanner />
         <section id="comparacao" aria-label="Comparação">
           <ComparisonSection />
@@ -38,9 +41,6 @@ export default function App() {
         </section>
         <section id="duvidas" aria-label="Dúvidas">
           <FAQSection />
-        </section>
-        <section id="credibilidade" aria-label="Credibilidade">
-          <TrustSection />
         </section>
       </main>
       <FooterSection />
