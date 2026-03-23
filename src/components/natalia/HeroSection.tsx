@@ -86,6 +86,9 @@ export function HeroSection() {
 
         {/* Overlay for Contrast */}
         <div className="absolute inset-0 bg-black/50 z-10" />
+        
+        {/* Bottom Fade for Transition */}
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black via-black/80 to-transparent z-15 pointer-events-none" />
       </div>
 
       {/* Decorative elements */}

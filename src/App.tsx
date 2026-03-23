@@ -12,6 +12,8 @@ import { WhatsAppButton } from './components/natalia/WhatsAppButton'
 import { CTABanner } from './components/natalia/CTABanner'
 import { Toaster } from './components/ui/toaster'
 
+import { SectionDivider } from './components/natalia/SectionDivider'
+
 export default function App() {
   return (
     <div className="min-h-screen bg-background text-foreground font-body">
@@ -20,6 +22,7 @@ export default function App() {
         <section id="hero" aria-label="Hero">
           <HeroSection />
         </section>
+        <SectionDivider />
         <section id="vantagens" aria-label="Vantagens">
           <ProblemSection />
         </section>
