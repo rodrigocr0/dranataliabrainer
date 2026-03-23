@@ -62,8 +62,8 @@ export function HeroSection() {
 
   const whatsappUrl = "https://api.whatsapp.com/send?phone=5585988991505"
 
-  const SliderComponent = ({ className = "" }: { className?: string }) => (
-    <div className={`relative aspect-square w-full rounded-[2.5rem] overflow-hidden shadow-[0_25px_55px_rgba(0,0,0,0.6)] select-none border-[3px] border-white/20 ring-1 ring-gold/40 mx-auto ${className}`}>
+  const renderSlider = (className = "") => (
+    <div className={`relative aspect-square w-full rounded-[2.5rem] overflow-hidden shadow-[0_25px_55px_rgba(0,0,0,0.6)] select-none border-[3px] border-white/20 ring-1 ring-gold/40 mx-auto ${className}`} style={{ touchAction: 'pan-y' }}>
       {/* After Image */}
       <img
         src={depoisImg}
@@ -106,7 +106,7 @@ export function HeroSection() {
         onPointerDown={stopAutoAnimation}
         onTouchStart={stopAutoAnimation}
         className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-40 appearance-none m-0 p-0"
-        style={{ WebkitAppearance: 'none' }}
+        style={{ WebkitAppearance: 'none', touchAction: 'pan-y' }}
       />
 
       {/* Labels */}
@@ -191,7 +191,7 @@ export function HeroSection() {
                   </motion.div>
                 )}
               </AnimatePresence>
-              <SliderComponent />
+              {renderSlider()}
             </div>
 
             {/* 4. Descriptive Text */}
@@ -231,7 +231,7 @@ export function HeroSection() {
                 </motion.div>
               )}
             </AnimatePresence>
-            <SliderComponent className="max-w-md lg:max-w-lg" />
+            {renderSlider("max-w-md lg:max-w-lg")}
           </motion.div>
         </div>
       </div>
