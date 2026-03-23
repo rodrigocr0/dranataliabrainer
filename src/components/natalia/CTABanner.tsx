@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useEffect, useRef } from 'react'
-import videoSource from '../../assets/video-fundo-comp.mp4'
+import videoSource from '../../assets/video-fundo-hero-2.mov'
 import videoPoster from '../../assets/tela-preload.webp'
 
 export function CTABanner() {
@@ -28,7 +28,7 @@ export function CTABanner() {
           poster={videoPoster}
           className="w-full h-full object-cover"
         >
-          <source src={videoSource} type="video/mp4" />
+          <source src={videoSource} />
         </video>
         {/* Dark Overlay for Depth and Legibility */}
         <div className="absolute inset-0 bg-black/80 backdrop-blur-[2px]" />

@@ -3,7 +3,7 @@ import { Diamond, MousePointer2 } from 'lucide-react'
 import React, { useState, useRef, useEffect } from 'react'
 import antesImg from '../../assets/antes-hero.webp'
 import depoisImg from '../../assets/depois-hero.webp'
-import videoSource from '../../assets/video-fundo-comp.mp4'
+import videoSource from '../../assets/video-fundo-hero-2.mov'
 import videoPoster from '../../assets/tela-preload.webp'
 
 export function HeroSection() {
@@ -13,10 +13,18 @@ export function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null)
 
   const [isAutoAnimating, setIsAutoAnimating] = useState(false)
+  const timerRef = useRef<any>(null)
+  const intervalRef = useRef<any>(null)
 
-  const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const stopAutoAnimation = () => {
     setIsAutoAnimating(false)
     setShowTooltip(false)
+    if (timerRef.current) clearTimeout(timerRef.current)
+    if (intervalRef.current) clearInterval(intervalRef.current)
+  }
+
+  const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    stopAutoAnimation()
     setSliderPos(Number(e.target.value))
   }
 
@@ -30,28 +38,26 @@ export function HeroSection() {
   }
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    timerRef.current = setTimeout(() => {
       setIsAutoAnimating(true)
       const sequence = [20, 80, 20, 80, 50];
       let index = 0;
       
-      const interval = setInterval(() => {
+      intervalRef.current = setInterval(() => {
         if (index < sequence.length) {
           setSliderPos(sequence[index]);
           index++;
         } else {
-          clearInterval(interval);
+          if (intervalRef.current) clearInterval(intervalRef.current);
           setIsAutoAnimating(false)
         }
       }, 700);
-      
-      return () => {
-        clearInterval(interval);
-        setIsAutoAnimating(false)
-      }
     }, 2000);
 
-    return () => clearTimeout(timer);
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
   }, []);
 
   const whatsappUrl = "https://api.whatsapp.com/send?phone=5585988991505"
@@ -97,14 +103,16 @@ export function HeroSection() {
         max="100"
         value={sliderPos}
         onChange={handleSliderChange}
+        onPointerDown={stopAutoAnimation}
+        onTouchStart={stopAutoAnimation}
         className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-40 appearance-none m-0 p-0"
         style={{ WebkitAppearance: 'none' }}
       />
 
       {/* Labels */}
       <div className="absolute top-4 right-4 z-10 pointer-events-none">
-        <span className="bg-gold/90 backdrop-blur-md text-white text-[9px] sm:text-xs font-bold px-4 py-1.5 rounded-full shadow-lg border border-white/10 uppercase tracking-widest whitespace-nowrap">
-          6 Meses
+        <span className="bg-gold backdrop-blur-md text-white text-[9px] sm:text-xs font-bold px-4 py-1.5 rounded-full shadow-lg border border-white/10 uppercase tracking-widest whitespace-nowrap">
+          6 meses de tratamento
         </span>
       </div>
 
@@ -133,7 +141,7 @@ export function HeroSection() {
           }`}
           onCanPlayThrough={handleVideoCanPlayThrough}
         >
-          <source src={videoSource} type="video/mp4" />
+          <source src={videoSource} />
         </video>
         {!isVideoLoaded && (
           <div className="absolute inset-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${videoPoster})` }} />
