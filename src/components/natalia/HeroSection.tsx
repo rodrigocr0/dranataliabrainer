@@ -56,8 +56,8 @@ export function HeroSection() {
 
   const whatsappUrl = "https://api.whatsapp.com/send?phone=5585988991505"
 
-  const SliderContent = () => (
-    <div className="relative w-full aspect-square max-w-[240px] sm:max-w-md lg:max-w-lg bg-black/20 rounded-[2.5rem] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.5)] group select-none border-[3px] border-white/20 ring-1 ring-gold/40 mx-auto lg:mx-0">
+  const SliderContent = ({ className = "" }: { className?: string }) => (
+    <div className={`relative w-full aspect-square bg-black/20 rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] group select-none border-[2px] border-white/20 ring-1 ring-gold/40 mx-auto lg:mx-0 ${className}`}>
       {/* After Image */}
       <img
         src={depoisImg}
@@ -83,7 +83,7 @@ export function HeroSection() {
         style={{ left: `${sliderPos}%` }}
       >
         {/* Visual Handle */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white border-[2.5px] border-gold rounded-full flex items-center justify-center shadow-2xl ring-4 ring-white/20">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-7 h-7 sm:w-8 sm:h-8 bg-white border-[2px] border-gold rounded-full flex items-center justify-center shadow-2xl ring-2 ring-white/10">
           <div className="flex gap-1">
             <div className="w-0.5 h-3 bg-gold/40 rounded-full" />
             <div className="w-0.5 h-3 bg-gold rounded-full" />
@@ -102,25 +102,25 @@ export function HeroSection() {
       />
 
       {/* Comparison Marks */}
-      <div className="absolute top-5 right-5 z-40 pointer-events-none">
-        <span className="bg-gold/90 backdrop-blur-md text-white text-[9px] sm:text-xs font-bold px-3 py-1.5 rounded-full shadow-lg border border-white/20 uppercase tracking-[0.2em]">
-          Resultado em 6 meses
+      <div className="absolute top-3 right-3 z-40 pointer-events-none">
+        <span className="bg-gold/80 backdrop-blur-md text-white text-[8px] sm:text-xs font-bold px-3 py-1 rounded-full shadow-lg border border-white/10 uppercase tracking-[0.1em]">
+          6 meses
         </span>
       </div>
 
-      <div className="absolute bottom-5 left-5 z-10 pointer-events-none">
-        <span className="bg-black/50 text-white text-[9px] px-2.5 py-1 rounded-lg backdrop-blur-md border border-white/10 font-bold tracking-widest uppercase">ANTES</span>
+      <div className="absolute bottom-3 left-3 z-10 pointer-events-none">
+        <span className="bg-black/50 text-white text-[8px] px-2 py-0.5 rounded backdrop-blur-md font-bold tracking-widest uppercase">A</span>
       </div>
-      <div className="absolute bottom-5 right-5 z-10 pointer-events-none">
-        <span className="bg-black/50 text-white text-[9px] px-2.5 py-1 rounded-lg backdrop-blur-md border border-white/10 font-bold tracking-widest uppercase">DEPOIS</span>
+      <div className="absolute bottom-3 right-3 z-10 pointer-events-none">
+        <span className="bg-black/50 text-white text-[8px] px-2 py-0.5 rounded backdrop-blur-md font-bold tracking-widest uppercase">D</span>
       </div>
     </div>
   )
 
   return (
-    <section className="relative h-screen min-h-[700px] flex items-center overflow-hidden bg-black py-4 lg:py-0">
+    <section className="relative h-screen min-h-[500px] flex items-center overflow-hidden bg-black py-2">
       {/* Video Background */}
-      <div className="absolute inset-0 w-full h-full z-0">
+      <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
         <video
           ref={videoRef}
           autoPlay
@@ -146,9 +146,9 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-black/60 z-10" />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-center">
-        <div className="grid lg:grid-cols-2 gap-6 lg:gap-16 items-center w-full">
-          {/* Text Content Column */}
+      <div className="container mx-auto px-4 sm:px-6 relative z-20 h-full flex items-center justify-center">
+        <div className="grid lg:grid-cols-2 gap-4 lg:gap-16 items-center w-full max-w-7xl">
+          {/* Content Wrapper */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
@@ -160,21 +160,21 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-gold/40 rounded-full px-3 py-1 mb-4 shadow-lg"
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-gold/40 rounded-full px-3 py-0.5 mb-2 lg:mb-4 shadow-lg"
             >
               <Diamond className="w-3 h-3 text-gold" />
               <span className="text-[10px] font-body font-bold text-white tracking-[0.2em] uppercase">
-                Invisalign Top Doctor Diamond
+                Top Doctor Diamond
               </span>
             </motion.div>
 
             {/* 2. Headline */}
-            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] text-white mb-6 lg:max-w-xl">
+            <h1 className="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] text-white mb-3 lg:mb-6 max-w-md sm:max-w-xl">
               Sorriso impecável <br className="hidden sm:block" /> <span className="text-gold italic">sem aparelho metálico</span>
             </h1>
 
-            {/* 3. Slider (MOBILE ONLY) */}
-            <div className="lg:hidden mb-8 w-full relative">
+            {/* 3. Slider (MOBILE + TABLET ONLY) */}
+            <div className="lg:hidden mb-4 sm:mb-6 w-full relative max-w-[200px] sm:max-w-[300px]">
               <SliderContent />
               {/* Tooltip for Mobile */}
               <AnimatePresence>
@@ -183,11 +183,11 @@ export function HeroSection() {
                     initial={{ opacity: 0, y: 10, scale: 0.8 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.8 }}
-                    className="absolute z-50 -top-6 left-1/2 -translate-x-1/2 pointer-events-none"
+                    className="absolute z-50 -top-4 left-1/2 -translate-x-1/2 pointer-events-none"
                   >
-                    <div className="bg-gold text-white text-[9px] font-bold px-3 py-1.5 rounded-full shadow-xl flex items-center gap-2 whitespace-nowrap animate-bounce">
+                    <div className="bg-gold text-white text-[8px] font-bold px-3 py-1 rounded-full shadow-xl flex items-center gap-1.5 whitespace-nowrap animate-bounce">
                       <MousePointer2 className="w-2.5 h-2.5" />
-                      Arraste para ver
+                      Arraste
                     </div>
                   </motion.div>
                 )}
@@ -195,8 +195,8 @@ export function HeroSection() {
             </div>
 
             {/* 4. Paragraph */}
-            <p className="font-body text-sm sm:text-base lg:text-lg text-white/80 mb-6 sm:mb-8 max-w-lg leading-relaxed">
-              O alinhador invisível para quem valoriza a própria imagem. Tecnologia de ponta para transformar seu sorriso de forma discreta.
+            <p className="font-body text-xs sm:text-base lg:text-lg text-white/70 mb-4 sm:mb-8 max-w-[280px] sm:max-w-lg leading-relaxed">
+              O alinhador invisível para quem valoriza a própria imagem. Tecnologia de ponta para transformar seu sorriso.
             </p>
 
             {/* 5. Button */}
@@ -206,7 +206,7 @@ export function HeroSection() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="btn-gold !text-white text-base sm:text-lg px-8 py-4 sm:px-10 sm:py-4 rounded-full font-bold inline-block shadow-[0_10px_30px_rgba(212,175,55,0.3)] mb-4 lg:mb-0"
+              className="btn-gold !text-white text-xs sm:text-lg px-6 py-3 sm:px-10 sm:py-4 rounded-full font-bold inline-block shadow-xl tracking-wide"
             >
               Quero me avaliar agora
             </motion.a>
@@ -217,7 +217,7 @@ export function HeroSection() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="hidden lg:flex justify-center relative"
+            className="hidden lg:flex justify-center relative scale-90 lg:scale-100"
           >
             {/* Tooltip for Desktop */}
             <AnimatePresence>
@@ -228,15 +228,15 @@ export function HeroSection() {
                   exit={{ opacity: 0, scale: 0.8 }}
                   className="absolute z-50 -top-6 left-1/2 -translate-x-1/2 pointer-events-none"
                 >
-                  <div className="bg-gold text-white text-[9px] font-bold px-3 py-1.5 rounded-full shadow-xl flex items-center gap-2 whitespace-nowrap animate-bounce">
-                    <MousePointer2 className="w-2.5 h-2.5" />
+                  <div className="bg-gold text-white text-[10px] font-bold px-4 py-2 rounded-full shadow-xl flex items-center gap-2 whitespace-nowrap animate-bounce">
+                    <MousePointer2 className="w-3 h-3" />
                     Arraste para ver
                   </div>
                   <div className="w-1.5 h-1.5 bg-gold rotate-45 mx-auto -mt-0.5 shadow-xl" />
                 </motion.div>
               )}
             </AnimatePresence>
-            <SliderContent />
+            <SliderContent className="max-w-md" />
           </motion.div>
         </div>
       </div>
