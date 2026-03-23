@@ -201,8 +201,8 @@ export function HeroSection() {
             className="flex flex-col items-center lg:items-start text-center lg:text-left"
           >
             {/* 0. Mobile Logo */}
-            <div className="mb-4 lg:hidden">
-              <img src={logoImg} alt="Dra. Natalia Brainer" className="h-9 opacity-90 mx-auto" />
+            <div className="mb-6 lg:hidden">
+              <img src={logoImg} alt="Dra. Natalia Brainer" className="h-12 sm:h-14 opacity-95 mx-auto" />
             </div>
 
             {/* 1. Badge */}
@@ -270,9 +270,9 @@ export function HeroSection() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="mb-2"
+              className="mb-4"
             >
-              <img src={logoImg} alt="Dra. Natalia Brainer" className="h-14 opacity-95" />
+              <img src={logoImg} alt="Dra. Natalia Brainer" className="h-16 lg:h-20 opacity-100" />
             </motion.div>
 
             <div className="relative w-full">
@@ -288,7 +288,7 @@ export function HeroSection() {
                   </motion.div>
                 )}
               </AnimatePresence>
-              {renderSlider("max-w-[400px] lg:max-w-[420px]")}
+              {renderSlider("max-w-[380px] lg:max-w-md")}
             </div>
           </motion.div>
         </div>
