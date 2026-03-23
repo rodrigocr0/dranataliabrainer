@@ -1,73 +1,100 @@
 import { motion } from 'framer-motion'
+import { HelpCircle, ChevronRight } from 'lucide-react'
 
 const faqs = [
   {
     q: 'Quanto custa o Invisalign?',
-    a: 'O investimento varia de R$ 12.000 a R$ 18.000, dependendo da complexidade do caso. Oferecemos parcelamento em até 12x sem juros. Agende uma consulta para conhecer as opções.',
+    a: 'O investimento varia de R$ 12.000 a R$ 25.000, dependendo da complexidade do caso. Oferecemos parcelamento em até 12x sem juros e condições facilitadas. Agende uma consulta para um orçamento detalhado.',
   },
   {
     q: 'Quanto tempo leva o tratamento?',
-    a: 'A maioria dos casos leva de 6 a 18 meses. Na consulta gratuita, você receberá uma estimativa personalizada.',
+    a: 'A maioria dos casos leva de 6 a 18 meses. Na sua Consulta Inicial, você receberá uma simulação digital 3D com a estimativa exata do tempo de tratamento.',
   },
   {
     q: 'Aparece o alinhador quando estou falando?',
-    a: 'Os alinhadores são praticamente invisíveis. Na grande maioria das situações — reuniões, apresentações, fotos — ninguém percebe.',
+    a: 'Os alinhadores são feitos com o material SmartTrack, patenteado pela Invisalign, sendo praticamente invisíveis. Em reuniões, apresentações ou fotos, ninguém percebe que você está em tratamento.',
   },
   {
     q: 'Preciso tirar para comer?',
-    a: 'Sim, e isso é uma vantagem! Você remove para comer e escovar os dentes, mantendo a higiene e aproveitando suas refeições sem restrições.',
+    a: 'Sim, e essa é a maior liberdade do Invisalign! Você remove para comer e escovar os dentes, mantendo sua rotina alimentar e higiene impecáveis, sem o incômodo de fios metálicos.',
   },
   {
-    q: 'Dói? É confortável?',
-    a: 'Você pode sentir uma leve pressão nos primeiros dias de cada alinhador, mas é muito mais confortável que o aparelho metálico. Sem fios cortantes ou brackets.',
+    q: 'O tratamento causa dor?',
+    a: 'Você sentirá uma leve pressão nos primeiros dias de cada novo estágio, o que indica que os dentes estão se movendo. É incomparavelmente mais confortável que os aparelhos tradicionais.',
   },
   {
     q: 'Vocês aceitam convênio ou parcelamento?',
-    a: 'Oferecemos parcelamento em até 12x sem juros. Também aceitamos alguns convênios odontológicos. Agende uma consulta para conhecer as opções disponíveis.',
+    a: 'Oferecemos parcelamento via cartão de crédito e boleto bancário (sob consulta). Sobre convênios, emitimos nota para que você possa solicitar o reembolso diretamente com seu plano.',
   },
 ]
 
 export function FAQSection() {
   return (
-    <section className="py-20 lg:py-28 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+    <section className="py-24 lg:py-32 bg-cream/30 relative overflow-hidden">
+      {/* Decorative Blur */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Dúvidas <span className="text-gold">Frequentes</span>
+          <span className="text-gold font-body font-semibold tracking-widest uppercase text-xs mb-4 block">Esclareça suas dúvidas</span>
+          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-4">
+            Dúvidas <span className="text-gold italic">Frequentes</span>
           </h2>
+          <div className="w-24 h-1 bg-gold mx-auto rounded-full mt-6 opacity-30" />
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="space-y-10"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           {faqs.map((faq, i) => (
-            <div key={i} className="group transition-all duration-300">
-              <div className="flex gap-4 sm:gap-6">
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold font-bold font-display text-lg">
-                  {i + 1}
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="bg-white p-8 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-gold/5 flex flex-col group hover:border-gold/20 hover:shadow-[0_15px_50px_rgba(212,175,55,0.08)] transition-all duration-500"
+            >
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center text-gold shrink-0 group-hover:bg-gold group-hover:text-white transition-colors duration-500">
+                  <HelpCircle className="w-5 h-5" />
                 </div>
-                <div>
-                  <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground mb-3 group-hover:text-gold transition-colors duration-300">
-                    {faq.q}
-                  </h3>
-                  <p className="font-body text-muted-foreground text-lg leading-relaxed max-w-2xl">
-                    {faq.a}
-                  </p>
+                <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground leading-tight group-hover:text-gold transition-colors duration-300">
+                  {faq.q}
+                </h3>
+              </div>
+              
+              <div className="flex flex-col flex-grow">
+                <p className="font-body text-muted-foreground text-base sm:text-lg leading-relaxed mb-6">
+                  {faq.a}
+                </p>
+                <div className="mt-auto flex items-center gap-2 text-gold font-body text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  Saiba mais <ChevronRight className="w-4 h-4" />
                 </div>
               </div>
-              {i < faqs.length - 1 && (
-                <div className="mt-10 h-px w-full bg-gradient-to-r from-gold/20 via-gold/10 to-transparent" />
-              )}
-            </div>
+            </motion.div>
           ))}
+        </div>
+
+        {/* Closing CTA */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="mt-20 text-center"
+        >
+          <p className="font-body text-muted-foreground text-lg mb-8">
+            Ainda tem alguma dúvida específica sobre o seu caso?
+          </p>
+          <a 
+            href="https://api.whatsapp.com/send?phone=5585988991505"
+            target="_blank"
+            className="inline-flex items-center gap-2 text-gold font-display font-bold text-xl hover:gap-4 transition-all"
+          >
+            Falar diretamente com um especialista <ChevronRight className="w-5 h-5" />
+          </a>
         </motion.div>
       </div>
     </section>
