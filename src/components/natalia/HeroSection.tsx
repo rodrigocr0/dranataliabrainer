@@ -3,7 +3,7 @@ import { Diamond, MousePointer2 } from 'lucide-react'
 import React, { useState, useRef, useEffect } from 'react'
 import antesImg from '../../assets/antes-hero.webp'
 import depoisImg from '../../assets/depois-hero.webp'
-import videoSource from '../../assets/video-fundo-hero-2.mov'
+import videoSource from '../../assets/video-fundo-hero-comp.mp4'
 import videoPoster from '../../assets/tela-preload.webp'
 
 export function HeroSection() {
@@ -36,9 +36,16 @@ export function HeroSection() {
     video.muted = true
     
     const playVideo = () => {
-      video.play().catch(error => {
-        console.error("Video play failed:", error)
-      })
+      video.muted = true
+      video.load()
+      const playPromise = video.play()
+      
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.log("Autoplay check:", error)
+          // Retry playback logic if needed or fallback
+        })
+      }
     }
 
     if (video.readyState >= 3) {

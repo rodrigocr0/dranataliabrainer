@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useEffect, useRef } from 'react'
-import videoSource from '../../assets/video-fundo-hero-2.mov'
+import videoSource from '../../assets/video-fundo-hero-comp.mp4'
 import videoPoster from '../../assets/tela-preload.webp'
 
 export function CTABanner() {
@@ -15,9 +15,16 @@ export function CTABanner() {
     video.muted = true
     
     const playVideo = () => {
-      video.play().catch(error => {
-        console.error("CTA Video play failed:", error)
-      })
+      video.muted = true
+      video.load()
+      const playPromise = video.play()
+      
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.log("CTA Autoplay check:", error)
+          // Retry playback logic if needed or fallback
+        })
+      }
     }
 
     if (video.readyState >= 3) {
