@@ -1,15 +1,26 @@
 import { motion } from 'framer-motion'
+import { useEffect, useRef } from 'react'
 import videoSource from '../../assets/video-fundo-comp.mp4'
 import videoPoster from '../../assets/tela-preload.webp'
 
 export function CTABanner() {
   const whatsappUrl = "https://api.whatsapp.com/send?phone=5585988991505"
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(error => {
+        console.error("CTA Video play failed:", error)
+      })
+    }
+  }, [])
 
   return (
     <section className="relative py-24 lg:py-40 overflow-hidden bg-black">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
@@ -37,7 +48,7 @@ export function CTABanner() {
           <h2 className="font-display text-3xl sm:text-5xl lg:text-7xl font-bold text-white mb-8 leading-tight drop-shadow-md lg:whitespace-nowrap">
             Agende sua Avaliação <span className="text-gold italic">Prime</span> hoje
           </h2>
-0
+
           <p className="font-body text-lg sm:text-xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed drop-shadow-md">
             Descubra como o <span className="text-gold font-semibold">Invisalign</span> pode transformar seu sorriso sem afetar sua imagem profissional. Tudo sendo conduzido por uma das maiores especialistas Invisalign do <span className="text-gold font-semibold">Brasil</span>.
           </p>
