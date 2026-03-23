@@ -3,14 +3,21 @@ import { Diamond, MousePointer2 } from 'lucide-react'
 import React, { useState, useRef, useEffect } from 'react'
 import antesImg from '../../assets/antes-hero.webp'
 import depoisImg from '../../assets/depois-hero.webp'
-import videoSource from '../../assets/video-fundo-hero-comp.mp4'
 import videoPoster from '../../assets/tela-preload.webp'
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wistia-player': any;
+    }
+  }
+}
 
 export function HeroSection() {
   const [sliderPos, setSliderPos] = useState(50)
   const [isVideoLoaded, setIsVideoLoaded] = useState(false)
   const [showTooltip, setShowTooltip] = useState(true)
-  const videoRef = useRef<HTMLVideoElement>(null)
+  const wistiaRef = useRef<any>(null)
 
   const [isAutoAnimating, setIsAutoAnimating] = useState(false)
   const timerRef = useRef<any>(null)
@@ -28,40 +35,28 @@ export function HeroSection() {
     setSliderPos(Number(e.target.value))
   }
 
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
-
-    video.defaultMuted = true
-    video.muted = true
-    
-    const playVideo = () => {
-      video.muted = true
-      video.load()
-      const playPromise = video.play()
-      
-      if (playPromise !== undefined) {
-        playPromise.catch(error => {
-          console.log("Autoplay check:", error)
-          // Retry playback logic if needed or fallback
-        })
-      }
-    }
-
-    if (video.readyState >= 3) {
-      playVideo()
-    } else {
-      video.addEventListener('canplay', playVideo)
-    }
-
-    return () => {
-      video.removeEventListener('canplay', playVideo)
-    }
-  }, [])
-
   const handleVideoCanPlayThrough = () => {
     setIsVideoLoaded(true)
   }
+
+  useEffect(() => {
+    const player = wistiaRef.current;
+    if (!player) return;
+
+    const handlePlay = () => {
+      setIsVideoLoaded(true);
+    };
+
+    player.addEventListener('play', handlePlay);
+    
+    // Fallback caso o evento de play demore muito ou não dispare (autoplay bloqueado)
+    const timer = setTimeout(() => setIsVideoLoaded(true), 5000);
+
+    return () => {
+      player.removeEventListener('play', handlePlay);
+      clearTimeout(timer);
+    };
+  }, []);
 
   useEffect(() => {
     timerRef.current = setTimeout(() => {
@@ -153,27 +148,44 @@ export function HeroSection() {
 
   return (
     <section className="relative h-screen min-h-[600px] flex items-center overflow-hidden bg-black pb-4 sm:pb-0">
-      {/* Video Background */}
-      <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          defaultMuted
-          poster={videoPoster}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-            isVideoLoaded ? 'opacity-100' : 'opacity-0'
-          }`}
-          onCanPlayThrough={handleVideoCanPlayThrough}
-        >
-          <source src={videoSource} />
-        </video>
+      {/* Video Background (Wistia) */}
+      <div className="absolute inset-0 w-full h-full z-0 pointer-events-none overflow-hidden bg-black">
+        {/* Imagem de Preload (Poster) */}
         {!isVideoLoaded && (
-          <div className="absolute inset-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${videoPoster})` }} />
+          <div 
+            className="absolute inset-0 w-full h-full bg-cover bg-center z-10" 
+            style={{ backgroundImage: `url(${videoPoster})` }} 
+          />
         )}
-        <div className="absolute inset-0 bg-black/60 z-10" />
+        
+        <div 
+          className={`w-full h-full transition-opacity duration-1000 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
+          style={{ 
+            position: 'absolute', 
+            top: '50%', 
+            left: '50%', 
+            transform: 'translate(-50%, -50%)', 
+            minWidth: '100%', 
+            minHeight: '100%',
+            width: '177.78vh',
+            height: '56.25vw'
+          }}
+        >
+          <wistia-player 
+            ref={wistiaRef}
+            media-id="owjhbk9dx6" 
+            autoplay="true" 
+            muted="true" 
+            loop="true" 
+            play-bar="false" 
+            small-play-button="false" 
+            controls-visible="false"
+            settings-control="false"
+            copy-link-and-thumbnail="false"
+            style={{ width: '100%', height: '100%', display: 'block' }}
+          ></wistia-player>
+        </div>
+        <div className="absolute inset-0 bg-black/60 z-20" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-20 h-full flex items-center justify-center">

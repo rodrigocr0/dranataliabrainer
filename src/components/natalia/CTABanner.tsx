@@ -1,61 +1,79 @@
-import { motion } from 'framer-motion'
-import { useEffect, useRef } from 'react'
-import videoSource from '../../assets/video-fundo-hero-comp.mp4'
+import { useEffect, useRef, useState } from 'react'
 import videoPoster from '../../assets/tela-preload.webp'
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wistia-player': any;
+    }
+  }
+}
 
 export function CTABanner() {
   const whatsappUrl = "https://api.whatsapp.com/send?phone=5585988991505"
-  const videoRef = useRef<HTMLVideoElement>(null)
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false)
+  const wistiaRef = useRef<any>(null)
 
   useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
+    const player = wistiaRef.current;
+    if (!player) return;
 
-    video.defaultMuted = true
-    video.muted = true
+    const handlePlay = () => {
+      setIsVideoLoaded(true);
+    };
+
+    player.addEventListener('play', handlePlay);
     
-    const playVideo = () => {
-      video.muted = true
-      video.load()
-      const playPromise = video.play()
-      
-      if (playPromise !== undefined) {
-        playPromise.catch(error => {
-          console.log("CTA Autoplay check:", error)
-          // Retry playback logic if needed or fallback
-        })
-      }
-    }
-
-    if (video.readyState >= 3) {
-      playVideo()
-    } else {
-      video.addEventListener('canplay', playVideo)
-    }
+    // Fallback
+    const timer = setTimeout(() => setIsVideoLoaded(true), 5000);
 
     return () => {
-      video.removeEventListener('canplay', playVideo)
-    }
+      player.removeEventListener('play', handlePlay);
+      clearTimeout(timer);
+    };
   }, [])
 
   return (
     <section className="relative py-24 lg:py-40 overflow-hidden bg-black">
-      {/* Video Background */}
-      <div className="absolute inset-0 z-0">
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          defaultMuted
-          poster={videoPoster}
-          className="w-full h-full object-cover"
+      {/* Video Background (Wistia) */}
+      <div className="absolute inset-0 z-0 overflow-hidden bg-black">
+        {/* Imagem de Preload (Poster) */}
+        {!isVideoLoaded && (
+          <div 
+            className="absolute inset-0 w-full h-full bg-cover bg-center z-10" 
+            style={{ backgroundImage: `url(${videoPoster})` }} 
+          />
+        )}
+
+        <div 
+          className={`w-full h-full transition-opacity duration-1000 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
+          style={{ 
+            position: 'absolute', 
+            top: '50%', 
+            left: '50%', 
+            transform: 'translate(-50%, -50%)', 
+            minWidth: '100%', 
+            minHeight: '100%',
+            width: '177.78vh',
+            height: '56.25vw'
+          }}
         >
-          <source src={videoSource} />
-        </video>
+          <wistia-player 
+            ref={wistiaRef}
+            media-id="owjhbk9dx6" 
+            autoplay="true" 
+            muted="true" 
+            loop="true" 
+            play-bar="false" 
+            small-play-button="false" 
+            controls-visible="false"
+            settings-control="false"
+            copy-link-and-thumbnail="false"
+            style={{ width: '100%', height: '100%', display: 'block' }}
+          ></wistia-player>
+        </div>
         {/* Dark Overlay for Depth and Legibility */}
-        <div className="absolute inset-0 bg-black/80 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-black/80 backdrop-blur-[2px] z-20" />
       </div>
 
       <div className="container relative z-10 mx-auto px-4 text-center">
