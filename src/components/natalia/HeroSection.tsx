@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import antesImg from '../../assets/antes-hero.webp'
 import depoisImg from '../../assets/depois-hero.webp'
 import videoSource from '../../assets/video-fundo-comp.mp4'
-import videoPoster from '../../assets/video-fundo-hero-cover.webp'
+import videoPoster from '../../assets/tela-preload.webp'
 
 export function HeroSection() {
   const [sliderPos, setSliderPos] = useState(50)
@@ -90,14 +90,14 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* INPUT - Must cover entire area for interation */}
+      {/* INPUT - Direct interaction with high z-index */}
       <input
         type="range"
         min="0"
         max="100"
         value={sliderPos}
         onChange={handleSliderChange}
-        className="absolute inset-x-0 inset-y-0 w-full h-full opacity-0 cursor-ew-resize z-40 appearance-none m-0 p-0"
+        className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-40 appearance-none m-0 p-0"
         style={{ WebkitAppearance: 'none' }}
       />
 
