@@ -118,7 +118,7 @@ export function ComparisonSection() {
                     </span>
                   </div>
                   {/* Badge Label */}
-                  <div className="absolute -top-2 right-4 bg-muted-foreground/40 text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-widest shadow-sm">
+                  <div className="absolute -top-2.5 right-4 bg-[#6b6b6b] text-white text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-sm z-20">
                     Aparelho Metálico
                   </div>
                 </div>
