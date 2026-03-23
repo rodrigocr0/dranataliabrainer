@@ -26,10 +26,10 @@ export default function App() {
         <section id="vantagens" aria-label="Vantagens">
           <ProblemSection />
         </section>
-        <CTABanner />
         <section id="resultados" aria-label="Resultados">
           <BeforeAfterSection />
         </section>
+        <CTABanner />
         <section id="comparacao" aria-label="Comparação">
           <ComparisonSection />
         </section>
@@ -42,7 +42,6 @@ export default function App() {
         <section id="credibilidade" aria-label="Credibilidade">
           <TrustSection />
         </section>
-        <ContactForm />
       </main>
       <FooterSection />
       <WhatsAppButton />
