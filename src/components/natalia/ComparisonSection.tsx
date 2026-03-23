@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Check, X, Sparkles, Smile, Clock, UserCheck, ShieldCheck, Zap } from 'lucide-react'
+import { Check, X, Sparkles, Clock, UserCheck, ShieldCheck, Zap } from 'lucide-react'
 
 const comparisons = [
   {
@@ -67,11 +67,13 @@ export function ComparisonSection() {
                 Escolha Prime
               </div>
             </div>
-            <div className="py-4 px-6 text-muted-foreground font-display text-xl font-medium">Aparelho Fixo</div>
+            <div className="relative py-4 px-6 bg-white/50 rounded-t-2xl border-x border-t border-muted/30">
+              <span className="text-muted-foreground font-display text-xl font-medium">Aparelho Fixo</span>
+            </div>
           </div>
 
           {/* Comparison Rows */}
-          <div className="space-y-4">
+          <div className="space-y-6 lg:space-y-4">
             {comparisons.map((item, index) => (
               <motion.div
                 key={index}
@@ -82,15 +84,15 @@ export function ComparisonSection() {
                 className="grid grid-cols-1 lg:grid-cols-[1fr_2fr_2fr] gap-4 lg:gap-8 items-stretch group"
               >
                 {/* Row Label (Mobile + Desktop) */}
-                <div className="flex items-center gap-3 lg:gap-4 p-4 lg:p-6 bg-white/40 lg:bg-transparent rounded-xl">
+                <div className="flex items-center gap-3 lg:gap-4 p-4 lg:p-6 bg-white/40 lg:bg-transparent rounded-xl self-center">
                   <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center text-gold shrink-0">
                     <item.icon className="w-5 h-5" />
                   </div>
                   <span className="font-display font-bold text-foreground lg:text-lg">{item.label}</span>
                 </div>
 
-                {/* Invisalign Value */}
-                <div className="relative p-6 bg-white border border-gold/10 rounded-2xl shadow-sm lg:shadow-[0_4px_20px_rgba(212,175,55,0.05)] ring-1 ring-gold/5 transition-all group-hover:ring-gold/20 group-hover:shadow-md">
+                {/* Invisalign Value Card */}
+                <div className="relative p-6 bg-white border border-gold/10 rounded-2xl shadow-sm ring-1 ring-gold/5 transition-all group-hover:ring-gold/20">
                   <div className="flex items-start gap-4">
                     <div className="w-5 h-5 rounded-full bg-gold/20 flex items-center justify-center shrink-0 mt-1">
                       <Check className="w-3 h-3 text-gold" />
@@ -99,23 +101,25 @@ export function ComparisonSection() {
                       {item.invisalign}
                     </span>
                   </div>
-                  <div className="lg:hidden absolute -top-2 right-4 bg-gold text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-widest">
+                  {/* Badge Label */}
+                  <div className="absolute -top-2 right-4 bg-gold text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-widest shadow-sm">
                     Invisalign
                   </div>
                 </div>
 
-                {/* Metal Value */}
-                <div className="p-6 bg-secondary/30 border border-transparent rounded-2xl grayscale-[50%] opacity-80">
+                {/* Metal Value Card (Matching Style but Muted) */}
+                <div className="relative p-6 bg-white/50 border border-muted/20 rounded-2xl shadow-sm ring-1 ring-muted/10 opacity-70 transition-all hover:opacity-90">
                   <div className="flex items-start gap-4">
-                    <div className="w-5 h-5 rounded-full bg-black/5 flex items-center justify-center shrink-0 mt-1 text-muted-foreground">
+                    <div className="w-5 h-5 rounded-full bg-muted/20 flex items-center justify-center shrink-0 mt-1 text-muted-foreground">
                       <X className="w-3 h-3" />
                     </div>
                     <span className="font-body text-muted-foreground leading-relaxed">
                       {item.metalico}
                     </span>
                   </div>
-                  <div className="lg:hidden absolute -top-2 right-4 bg-muted-foreground/30 text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-widest">
-                    Aparelho Fixo
+                  {/* Badge Label */}
+                  <div className="absolute -top-2 right-4 bg-muted-foreground/40 text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-widest shadow-sm">
+                    Aparelho Metálico
                   </div>
                 </div>
               </motion.div>
@@ -126,7 +130,7 @@ export function ComparisonSection() {
           <motion.div 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            className="mt-12 text-center"
+            className="mt-16 text-center"
           >
             <p className="font-display italic text-gold text-xl sm:text-2xl font-medium tracking-tight">
               A elegância mora nos detalhes que ninguém vê.
