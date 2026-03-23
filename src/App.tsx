@@ -23,11 +23,11 @@ export default function App() {
           <HeroSection />
         </section>
         <SectionDivider />
-        <section id="vantagens" aria-label="Vantagens">
-          <ProblemSection />
-        </section>
         <section id="resultados" aria-label="Resultados">
           <BeforeAfterSection />
+        </section>
+        <section id="vantagens" aria-label="Vantagens">
+          <ProblemSection />
         </section>
         <CTABanner />
         <section id="comparacao" aria-label="Comparação">
