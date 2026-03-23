@@ -50,7 +50,7 @@ export function ComparisonSection() {
         >
           <span className="text-gold font-body font-semibold tracking-widest uppercase text-xs mb-3 block">Decisão Inteligente</span>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Invisalign vs. Aparelho Metálico
+            <span className="text-gold italic">Invisalign</span> vs. Aparelho Metálico
           </h2>
           <p className="font-body text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
             Compare e descubra por que os alinhadores transparentes são a escolha número um de executivos e profissionais que não abrem mão da excelência.
