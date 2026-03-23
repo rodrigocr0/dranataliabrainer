@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import antesImg from '../../assets/antes-hero.webp'
 import depoisImg from '../../assets/depois-hero.webp'
 import videoPoster from '../../assets/tela-preload.webp'
+import logoImg from '../../assets/logo_dra_natalia-webp.webp'
 
 declare global {
   namespace JSX {
@@ -188,8 +189,13 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-black/60 z-20" />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-20 h-full flex items-center justify-center">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full max-w-7xl pt-16 sm:pt-0">
+      <div className="container mx-auto px-4 sm:px-6 relative z-30 h-full flex items-center justify-center">
+        {/* Mobile Logo - Top Left */}
+        <div className="absolute top-6 left-4 lg:hidden">
+          <img src={logoImg} alt="Dra. Natalia Brainer" className="h-7 opacity-90" />
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-4 lg:gap-16 items-center w-full max-w-7xl pt-12 lg:pt-0">
           
           {/* Main Content Column */}
           <motion.div
@@ -212,12 +218,12 @@ export function HeroSection() {
             </motion.div>
 
             {/* 2. Headline */}
-            <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] text-white mb-6 lg:mb-10 max-w-[320px] sm:max-w-xl lg:max-w-2xl">
+            <h1 className="font-display text-3xl sm:text-5xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] text-white mb-4 lg:mb-8 max-w-[320px] sm:max-w-xl lg:max-w-2xl">
               Sorriso impecável <br className="hidden sm:block" /> <span className="text-gold italic">sem aparelho metálico</span>
             </h1>
 
             {/* 3. Slider (MOBILE + TABLET) */}
-            <div className="relative w-full max-w-[280px] sm:max-w-sm lg:hidden mb-8 sm:mb-10 group">
+            <div className="relative w-full max-w-[260px] sm:max-w-sm lg:hidden mb-6 group">
               <AnimatePresence>
                 {showTooltip && (
                   <motion.div
@@ -234,7 +240,7 @@ export function HeroSection() {
             </div>
 
             {/* 4. Descriptive Text */}
-            <p className="font-body text-sm sm:text-lg lg:text-xl text-white/80 mb-8 sm:mb-12 max-w-[300px] sm:max-w-lg lg:max-w-xl leading-relaxed">
+            <p className="font-body text-xs sm:text-base lg:text-lg text-white/80 mb-6 lg:mb-10 max-w-[300px] sm:max-w-lg lg:max-w-xl leading-relaxed">
               O alinhador invisível para quem valoriza a própria imagem. Tecnologia de ponta para transformar seu sorriso de forma extremamente discreta.
             </p>
 
@@ -245,7 +251,7 @@ export function HeroSection() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="btn-gold !text-white text-base sm:text-xl px-10 py-5 sm:px-12 sm:py-6 rounded-full font-bold inline-block shadow-[0_15px_40px_rgba(212,175,55,0.3)] tracking-wide"
+              className="btn-gold !text-white text-sm sm:text-lg px-8 py-4 sm:px-10 sm:py-5 rounded-full font-bold inline-block shadow-[0_15px_40px_rgba(212,175,55,0.3)] tracking-wide"
             >
               Quero me avaliar agora
             </motion.a>
@@ -256,21 +262,33 @@ export function HeroSection() {
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="hidden lg:block relative"
+            className="hidden lg:flex flex-col items-center gap-8 relative"
           >
-            <AnimatePresence>
-              {showTooltip && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-                  className="absolute z-50 -top-10 left-1/2 -translate-x-1/2 pointer-events-none"
-                >
-                  <div className="bg-gold text-white text-[10px] font-bold px-5 py-2.5 rounded-full shadow-2xl flex items-center gap-2 animate-bounce">
-                    <MousePointer2 className="w-4 h-4" /> Arraste para ver
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-            {renderSlider("max-w-md lg:max-w-lg")}
+            {/* Desktop Logo Above Slider */}
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="mb-2"
+            >
+              <img src={logoImg} alt="Dra. Natalia Brainer" className="h-10 opacity-90" />
+            </motion.div>
+
+            <div className="relative w-full">
+              <AnimatePresence>
+                {showTooltip && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
+                    className="absolute z-50 -top-10 left-1/2 -translate-x-1/2 pointer-events-none"
+                  >
+                    <div className="bg-gold text-white text-[10px] font-bold px-5 py-2.5 rounded-full shadow-2xl flex items-center gap-3 animate-bounce">
+                      <MousePointer2 className="w-4 h-4" /> Arraste para ver
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+              {renderSlider("max-w-md lg:max-w-[480px]")}
+            </div>
           </motion.div>
         </div>
       </div>
