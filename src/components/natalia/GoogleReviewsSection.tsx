@@ -1,7 +1,7 @@
-import { motion } from 'framer-motion'
-import { Star, Quote, CheckCircle2 } from 'lucide-react'
+import { motion, useMotionValue } from 'framer-motion'
+import { Star, Quote, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 
-// Real testemonials found from search and general patient reviews
 const reviews = [
   {
     author: 'Giselly Soares',
@@ -45,95 +45,141 @@ const reviews = [
 const extendedReviews = [...reviews, ...reviews, ...reviews]
 
 export function GoogleReviewsSection() {
-  return (
-    <section className="py-24 lg:py-32 bg-white overflow-hidden border-t border-gold/10">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex flex-col md:flex-row items-center justify-between gap-10"
-        >
-          <div className="text-center md:text-left">
-            <div className="flex items-center justify-center md:justify-start gap-3 mb-5">
-              <div className="flex gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-6 h-6 fill-[#fbbc04] text-[#fbbc04] drop-shadow-sm" />
-                ))}
-              </div>
-              <span className="font-display font-black text-2xl text-foreground">5.0</span>
-            </div>
-            <h2 className="font-display text-4xl sm:text-5xl font-bold text-foreground leading-tight">
-              O que dizem no <span className="text-gold italic">Google Reviews</span>
-            </h2>
-          </div>
+  const [isPaused, setIsPaused] = useState(false)
+  const [width, setWidth] = useState(0)
+  const carousel = useRef<HTMLDivElement>(null)
+  const x = useMotionValue(0)
 
-          <div className="flex flex-col items-center md:items-end">
-            <div className="flex items-center gap-4 bg-[#f8f9fa] px-6 py-3 rounded-2xl border border-gold/10 shadow-sm">
-              <img 
-                src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" 
-                alt="Google" 
-                className="h-6"
-              />
-              <div className="h-6 w-px bg-gold/20" />
-              <span className="text-sm font-body text-foreground font-semibold flex items-center gap-2">
-                Avaliações Verificadas <CheckCircle2 className="w-4 h-4 text-blue-500" />
-              </span>
+  useEffect(() => {
+    if (carousel.current) {
+      setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth)
+    }
+  }, [])
+
+  // Auto-scroll logic that can be paused
+  useEffect(() => {
+    let animationFrame: number
+    const animate = () => {
+      if (!isPaused) {
+        const currentX = x.get()
+        if (currentX <= -1800) { // reset point
+          x.set(0)
+        } else {
+          x.set(currentX - 0.5) // Speed
+        }
+      }
+      animationFrame = requestAnimationFrame(animate)
+    }
+    
+    animationFrame = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(animationFrame)
+  }, [isPaused, x])
+
+  const handleNext = () => {
+    x.set(x.get() - 400)
+  }
+
+  const handlePrev = () => {
+    x.set(x.get() + 400)
+  }
+
+  return (
+    <section className="py-12 lg:py-16 bg-white overflow-hidden border-t border-gold/10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 mb-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="text-left"
+        >
+          <div className="flex items-center gap-2 mb-2">
+            <div className="flex gap-0.5">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-4 h-4 fill-[#fbbc04] text-[#fbbc04]" />
+              ))}
             </div>
-            <p className="text-xs text-muted-foreground mt-3 font-body tracking-[0.2em] uppercase font-bold">Baseado em mais de 70 depoimentos 5 estrelas</p>
+            <span className="font-display font-black text-lg text-foreground">5.0</span>
           </div>
+          <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground">
+            O que dizem no <span className="text-gold italic">Google Reviews</span>
+          </h2>
         </motion.div>
+
+        <div className="flex items-center gap-4">
+          <div className="hidden sm:flex items-center gap-3 bg-[#f8f9fa] px-4 py-2 rounded-xl border border-gold/10">
+            <img 
+              src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" 
+              alt="Google" 
+              className="h-4"
+            />
+            <span className="text-[10px] font-body text-foreground font-bold uppercase tracking-wider">Verificadas</span>
+          </div>
+          
+          <div className="flex gap-2">
+            <button 
+              onClick={handlePrev}
+              className="w-8 h-8 rounded-full border border-gold/30 flex items-center justify-center text-gold hover:bg-gold hover:text-white transition-all shadow-sm"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <button 
+              onClick={handleNext}
+              className="w-8 h-8 rounded-full border border-gold/30 flex items-center justify-center text-gold hover:bg-gold hover:text-white transition-all shadow-sm"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* Infinite Horizontal Carousel */}
-      <div className="relative w-full overflow-hidden">
+      <div 
+        className="relative w-full overflow-hidden cursor-grab active:cursor-grabbing"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
         <motion.div 
-          className="flex gap-8 px-4"
-          initial={{ x: 0 }}
-          animate={{ x: "-100%" }} 
-          transition={{
-            duration: 50,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          whileHover={{ transition: { duration: 150 } }} // Slow down on hover
-          style={{ width: "fit-content" }}
+          ref={carousel}
+          style={{ x }}
+          drag="x"
+          dragConstraints={{ right: 0, left: -width }}
+          className="flex gap-6 px-4"
         >
           {extendedReviews.map((review, index) => (
             <div 
               key={index}
-              className="w-[320px] sm:w-[400px] bg-white p-10 rounded-[2.5rem] border border-gold/10 flex flex-col justify-between group hover:border-gold/30 hover:shadow-[0_20px_60px_rgba(212,175,55,0.1)] transition-all duration-700 relative"
+              className="w-[280px] sm:w-[350px] bg-white p-6 sm:p-8 rounded-[2rem] border border-gold/10 flex flex-col justify-between group hover:border-gold/30 hover:shadow-[0_15px_40px_rgba(212,175,55,0.08)] transition-all duration-500 shrink-0 select-none relative"
             >
-              <div className="absolute top-8 right-10 opacity-5 group-hover:opacity-10 transition-opacity">
-                <Quote className="w-16 h-16 text-gold" />
+              <div className="absolute top-6 right-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                <Quote className="w-10 h-10 text-gold" />
               </div>
 
               <div>
-                <div className="flex gap-1 mb-8">
+                <div className="flex gap-0.5 mb-4">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-[#fbbc04] text-[#fbbc04]" />
+                    <Star key={i} className="w-3 h-3 fill-[#fbbc04] text-[#fbbc04]" />
                   ))}
                 </div>
                 
-                <p className="font-body text-foreground/90 text-[1.05rem] leading-relaxed italic mb-10 min-h-[120px]">
+                <p className="font-body text-foreground/90 text-sm sm:text-[0.95rem] leading-relaxed italic mb-8 min-h-[100px] pointer-events-none">
                   "{review.text}"
                 </p>
               </div>
 
-              <div className="flex items-center gap-5">
+              <div className="flex items-center gap-4">
                 <div className="relative">
                   <img 
                     src={review.avatar} 
                     alt={review.author} 
-                    className="w-14 h-14 rounded-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-500 ring-4 ring-gold/5 group-hover:ring-gold/20"
+                    className="w-12 h-12 rounded-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500 ring-4 ring-gold/5 group-hover:ring-gold/10"
                   />
                   <div className="absolute -bottom-1 -right-1 bg-white rounded-full p-0.5 shadow-sm">
-                    <img src="https://www.google.com/favicon.ico" alt="G" className="w-4 h-4" />
+                    <img src="https://www.google.com/favicon.ico" alt="G" className="w-3 h-3" />
                   </div>
                 </div>
                 <div>
-                  <h4 className="font-display font-bold text-foreground text-sm uppercase tracking-widest">{review.author}</h4>
-                  <p className="text-[11px] text-muted-foreground font-body font-medium mt-0.5">{review.date} via Google Maps</p>
+                  <h4 className="font-display font-bold text-foreground text-xs uppercase tracking-widest">{review.author}</h4>
+                  <p className="text-[10px] text-muted-foreground font-body font-medium mt-0.5">{review.date}</p>
                 </div>
               </div>
             </div>
@@ -141,8 +187,12 @@ export function GoogleReviewsSection() {
         </motion.div>
       </div>
 
-      <div className="flex justify-center mt-16">
-        <div className="h-px w-24 bg-gold/20" />
+      <div className="flex justify-center mt-8">
+        <p className="text-gold/60 font-body text-[10px] uppercase tracking-widest flex items-center gap-2">
+          <span className="w-4 h-[1px] bg-gold/30"></span>
+          Arraste para navegar • Pare para ler
+          <span className="w-4 h-[1px] bg-gold/30"></span>
+        </p>
       </div>
     </section>
   )
