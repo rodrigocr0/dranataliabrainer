@@ -16,6 +16,9 @@ export function FooterSection() {
           src={bgImage} 
           alt="Consultório" 
           className="w-full h-full object-cover opacity-10"
+          loading="lazy"
+          width={1920}
+          height={1080}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#080808] via-[#080808]/90 to-[#080808]" />
       </div>
@@ -109,7 +112,14 @@ export function FooterSection() {
         {/* Bottom Bar - Minimalist and Feminine */}
         <div className="pt-16 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-10 text-center md:text-left">
           <div className="flex flex-col items-center md:items-start gap-4">
-            <img src={logoImg} alt="Dra. Natalia Brainer" className="h-9 opacity-90" />
+            <img 
+              src={logoImg} 
+              alt="Dra. Natalia Brainer" 
+              className="h-9 opacity-90" 
+              loading="lazy"
+              width={144}
+              height={36}
+            />
             <p className="font-body text-[9px] text-white/20 uppercase tracking-[0.25em]">
               Copyright &copy; {currentYear} — Dra. Natalia Brainer. Todos os direitos reservados.
             </p>

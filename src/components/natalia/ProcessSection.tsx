@@ -38,6 +38,9 @@ export function ProcessSection() {
           src={bgImage} 
           alt="Tratamento Invisalign" 
           className="w-full h-full object-cover opacity-10 grayscale"
+          loading="lazy"
+          width={1920}
+          height={1080}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-cream via-transparent to-cream" />
       </div>

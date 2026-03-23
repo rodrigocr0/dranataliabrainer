@@ -12,11 +12,13 @@ Dra. Natalia Brainer, certificada Invisalign Top Doctor Diamond, agende sua aval
     <link rel="canonical" href="https://dranataliabrainer.com.br" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     
+    <!-- Preload Critical Assets -->
+    <link rel="preload" as="image" href="/src/assets/logo_dra_natalia-webp.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="/src/assets/tela-preload.webp" fetchpriority="high">
+
     <meta property="og:type" content="website" />
-    
-    
     <meta property="og:url" content="https://dranataliabrainer.com.br">
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -38,19 +40,12 @@ Dra. Natalia Brainer, certificada Invisalign Top Doctor Diamond, agende sua aval
     }
     </script>
     <meta property="og:title" content="Dra. Natalia Brainer | Invisalign Top Doctor Diamond em Fortaleza">
-  <meta name="twitter:title" content="Dra. Natalia Brainer | Invisalign Top Doctor Diamond em Fortaleza">
-  <meta property="og:description" content="Invisalign para executivas e profissionais em Fortaleza. 
-
-Dra. Natalia Brainer, certificada Invisalign Top Doctor Diamond, agende sua avaliação.">
-  <meta name="twitter:description" content="Invisalign para executivas e profissionais em Fortaleza. 
-
-Dra. Natalia Brainer, certificada Invisalign Top Doctor Diamond, agende sua avaliação.">
-  <meta property="og:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/YZJjR0meETeQMTTFrFndMOlC9r92/social-images/social-1774210878578-logo_dra_natalia.webp">
+    <meta name="twitter:title" content="Dra. Natalia Brainer | Invisalign Top Doctor Diamond em Fortaleza">
+    <meta property="og:description" content="Invisalign para executivas e profissionais em Fortaleza. Dra. Natalia Brainer, certificada Invisalign Top Doctor Diamond, agende sua avaliação.">
+    <meta name="twitter:description" content="Invisalign para executivas e profissionais em Fortaleza. Dra. Natalia Brainer, certificada Invisalign Top Doctor Diamond, agende sua avaliação.">
+    <meta property="og:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/YZJjR0meETeQMTTFrFndMOlC9r92/social-images/social-1774210878578-logo_dra_natalia.webp">
     <meta name="twitter:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/YZJjR0meETeQMTTFrFndMOlC9r92/social-images/social-1774210878578-logo_dra_natalia.webp">
     
-    <!-- Wistia Scripts -->
-    <script src="https://fast.wistia.com/player.js" async></script>
-    <script src="https://fast.wistia.com/embed/owjhbk9dx6.js" async></script>
     <style>
       wistia-player[media-id='owjhbk9dx6']:not(:defined) { 
         background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/owjhbk9dx6/swatch'); 
@@ -62,6 +57,9 @@ Dra. Natalia Brainer, certificada Invisalign Top Doctor Diamond, agende sua aval
   </head>
   <body>
     <div id="root"></div>
+    <!-- Non-critical scripts loaded at the end with defer/async -->
+    <script src="https://fast.wistia.com/player.js" defer></script>
+    <script src="https://fast.wistia.com/embed/owjhbk9dx6.js" defer></script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

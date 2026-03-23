@@ -135,6 +135,9 @@ export function BeforeAfterSection() {
                   src={post.image} 
                   alt="Transformação Invisalign" 
                   className="w-full h-full object-cover pointer-events-none" 
+                  loading="lazy"
+                  width={320}
+                  height={320}
                 />
               </div>
 

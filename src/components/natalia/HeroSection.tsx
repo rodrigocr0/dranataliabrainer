@@ -202,7 +202,14 @@ export function HeroSection() {
           >
             {/* 0. Mobile Logo */}
             <div className="mb-6 lg:hidden">
-              <img src={logoImg} alt="Dra. Natalia Brainer" className="h-12 sm:h-14 opacity-95 mx-auto" />
+              <img 
+                src={logoImg} 
+                alt="Dra. Natalia Brainer" 
+                className="h-12 sm:h-14 opacity-95 mx-auto"
+                width={200}
+                height={50}
+                fetchPriority="high"
+              />
             </div>
 
             {/* 1. Badge */}
@@ -272,7 +279,14 @@ export function HeroSection() {
               transition={{ delay: 0.5 }}
               className="mb-4"
             >
-              <img src={logoImg} alt="Dra. Natalia Brainer" className="h-16 lg:h-20 opacity-100" />
+              <img 
+                src={logoImg} 
+                alt="Dra. Natalia Brainer" 
+                className="h-16 lg:h-20 opacity-100" 
+                width={300}
+                height={80}
+                fetchPriority="high"
+              />
             </motion.div>
 
             <div className="relative w-full">

@@ -111,6 +111,9 @@ export function GoogleReviewsSection() {
               src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" 
               alt="Google" 
               className="h-4"
+              loading="lazy"
+              width={46}
+              height={15}
             />
             <span className="text-[10px] font-body text-foreground font-bold uppercase tracking-wider">Verificadas</span>
           </div>
@@ -172,9 +175,12 @@ export function GoogleReviewsSection() {
                     src={review.avatar} 
                     alt={review.author} 
                     className="w-12 h-12 rounded-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500 ring-4 ring-gold/5 group-hover:ring-gold/10"
+                    loading="lazy"
+                    width={48}
+                    height={48}
                   />
                   <div className="absolute -bottom-1 -right-1 bg-white rounded-full p-0.5 shadow-sm">
-                    <img src="https://www.google.com/favicon.ico" alt="G" className="w-3 h-3" />
+                    <img src="https://www.google.com/favicon.ico" alt="G" className="w-3 h-3" loading="lazy" width={12} height={12} />
                   </div>
                 </div>
                 <div>

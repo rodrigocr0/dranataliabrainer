@@ -27,6 +27,9 @@ export function TrustSection() {
                 src={nataliaImg} 
                 alt="Dra. Natalia Brainer" 
                 className="w-full aspect-[4/5] object-cover transition-all duration-700 hover:scale-105" 
+                loading="lazy"
+                width={400}
+                height={500}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-60" />
             </div>
