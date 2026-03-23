@@ -6,7 +6,7 @@ const steps = [
   {
     icon: Scan,
     step: 'Passo 1',
-    title: 'Consulta Gratuita',
+    title: 'Consulta Inicial',
     description: 'Avaliação 3D de alta precisão do seu sorriso.',
   },
   {
