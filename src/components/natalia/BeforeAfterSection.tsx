@@ -1,34 +1,43 @@
 import { motion } from 'framer-motion'
 import { Heart, MessageCircle, Send, Bookmark, CheckCircle2 } from 'lucide-react'
 import avatarImg from '../../assets/perfil-instagram.jpg'
-import antesImg from '../../assets/antes-hero-webp.webp'
-import depoisImg from '../../assets/depois-hero-webp.webp'
 
-const testimonials = [
+import post1 from '../../assets/post-1.webp'
+import post2 from '../../assets/post-2.webp'
+import post3 from '../../assets/post-3.webp'
+import post4 from '../../assets/post-4.webp'
+import post5 from '../../assets/post-5.webp'
+import post6 from '../../assets/post-6.webp'
+
+const postData = [
   {
-    author: 'dranataliabrainer',
-    patient: 'Adelaide Marques',
-    text: 'Transformação incrível em apenas 8 meses. Discreto e eficiente. Paciente radiante! ✨',
+    image: post1,
+    text: `Ver o antes e depois é incrível.\n\nMas acompanhar o durante… é ainda mais.\n\nCada caso aqui no consultório é planejado com carinho, tecnologia e estratégia. E quando o paciente confia no processo, o resultado aparece não só no sorriso, mas no olhar de quem volta a se reconhecer no espelho.\n\nEsse é o poder do Invisalign: transformar, sem atrapalhar sua rotina.\n\nEstá esperando o quê pra começar o seu? 💙`,
   },
   {
-    author: 'dranataliabrainer',
-    patient: 'Cláudio Ferreira',
-    text: 'A melhor escolha para quem tem agenda cheia. Maestria Diamond! Resultado impecável. 💎',
+    image: post2,
+    text: `Acreditem ou não, mas esse caso foi tratado em apenas 6 meses! 😍😱\n\nGostaria de ressaltar que a disciplina da paciente foi essencial para esse resultado. \n\nSua principal queixa era o desnível entre os dois incisivos centrais superiores e o apinhamento inferior e tudo isso foi tratado com apenas 18 alinhadores. \n\nFicou incrível não é mesmo? Cada dia que passa fico mais surpresa com todas as possibilidades do Invisalign 😍\n\n#invisalign #invisalignbrasil #invisalignday`,
   },
   {
-    author: 'dranataliabrainer',
-    patient: 'Ricardo Santos',
-    text: 'Invisalign mudou minha segurança em reuniões. Resultado totalmente invisível. 🚀',
+    image: post3,
+    text: `Mais um Caso lindo de Invisalign sendo concluído.\n\nComo amo esses resultados. 😍🥰\nComenta aqui o que achou.\n\n#invisalign #tratamentosortodonticos #tramentosdentários #dentistaortodontista #tratamentocominvisalign #renovarsorissos #itero #antesedepois #casoortodontico`,
   },
   {
-    author: 'dranataliabrainer',
-    patient: 'Mariana Lima',
-    text: 'Conforto e previsibilidade. O planejamento digital faz toda a diferença no sorriso. 🌟',
+    image: post4,
+    text: `Resultados que inspiram. \nEssa paciente nos procurou alguns meses antes do seu casamento para uma missão: melhorar o seu sorriso e deixá-lo à altura desse grande momento! \n\nEntão, não poderíamos pensar em uma solução melhor, não é?! Propomos o tratamento com Invisalign, e, com um bom planejamento e com a disciplina da paciente, conseguimos atingir nossos objetivos. \n\nHá hoje, ao final do tratamento, os dentes estão assim, perfeitamente alinhados e valorizando ainda mais a beleza dela! \n\nMaravilhoso, não é mesmo?! \n\nFiquei muito feliz por poder contribuir para esse momento tão importante na vida da @beafontenele , paciente querida. ❤️❤️❤️\n\n#tratamentocominvisalign #invisalign #casosinvisalign #casosortodonticos #tratamentoortodontico #ortodontiaestetica`,
+  },
+  {
+    image: post5,
+    text: `Mais um sorriso transformado com Invisalign. 🤍\n\nEssa paciente chegou com pequenas irregularidades nos dentes anteriores e buscava harmonia no sorriso, mas sem abrir mão de conforto e discrição.\n\nCom um planejamento preciso e o uso da tecnologia Invisalign, conseguimos alinhar o sorriso de forma leve, previsível e sem os incômodos do aparelho fixo.\n\nVer o antes e depois é incrível, mas acompanhar o quanto essa mudança impacta na autoconfiança da paciente é o que torna tudo ainda mais especial. \n\nAgende sua avaliação e descubra como o Invisalign pode transformar o seu sorriso também.`,
+  },
+  {
+    image: post6,
+    text: `Mais um sorriso transformado com Invisalign por aqui!\n\nE o que muda não são só os dentes: é a forma como o paciente se enxerga, a confiança no olhar, o orgulho de sorrir sem pensar duas vezes. 💙`,
   },
 ]
 
-// To make infinite loop, we duplicate the array
-const extendedTestimonials = [...testimonials, ...testimonials, ...testimonials]
+// Extended array for seamless looping
+const extendedPosts = [...postData, ...postData, ...postData]
 
 export function BeforeAfterSection() {
   return (
@@ -47,22 +56,21 @@ export function BeforeAfterSection() {
         </motion.div>
       </div>
 
-      {/* Infinite Horizontal Carousel */}
       <div className="relative w-full overflow-hidden py-4">
         <motion.div 
           className="flex gap-6 px-4"
-          animate={{ x: [0, -1400] }} // Adjust based on card width + gap
+          animate={{ x: [0, -2200] }} // Adjusted for 6 items loop
           transition={{
-            duration: 30,
+            duration: 40,
             repeat: Infinity,
             ease: "linear",
           }}
           style={{ width: "max-content" }}
         >
-          {extendedTestimonials.map((item, index) => (
+          {extendedPosts.map((post, index) => (
             <div 
               key={index}
-              className="w-[320px] sm:w-[380px] bg-white rounded-xl shadow-lg border border-border flex-shrink-0"
+              className="w-[300px] sm:w-[350px] bg-white rounded-xl shadow-lg border border-border flex-shrink-0"
             >
               {/* Instagram Style Header */}
               <div className="flex items-center justify-between p-3 border-b border-border/50">
@@ -74,7 +82,7 @@ export function BeforeAfterSection() {
                   </div>
                   <div>
                     <div className="flex items-center gap-1">
-                      <span className="font-body text-xs font-bold text-foreground line-height-none">dranataliabrainer</span>
+                      <span className="font-body text-xs font-bold text-foreground leading-none">dranataliabrainer</span>
                       <CheckCircle2 className="w-3 h-3 text-[#0095f6] fill-[#0095f6] text-white" />
                     </div>
                     <p className="text-[10px] text-muted-foreground font-body leading-none italic">Dra Natalia Brainer</p>
@@ -82,16 +90,13 @@ export function BeforeAfterSection() {
                 </div>
               </div>
 
-              {/* Photos Grid */}
-              <div className="aspect-square relative flex bg-beige/5">
-                <div className="w-1/2 h-full border-r-[0.5px] border-white relative overflow-hidden group">
-                  <img src={antesImg} alt="Antes" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                  <span className="absolute top-2 left-2 bg-black/50 text-[10px] text-white px-2 py-0.5 rounded font-body uppercase">Antes</span>
-                </div>
-                <div className="w-1/2 h-full border-l-[0.5px] border-white relative overflow-hidden group">
-                  <img src={depoisImg} alt="Depois" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                  <span className="absolute top-2 right-2 bg-gold/80 text-[10px] text-white px-2 py-0.5 rounded font-body uppercase">Depois</span>
-                </div>
+              {/* Patient Post Image */}
+              <div className="aspect-square relative overflow-hidden bg-beige/5">
+                <img 
+                  src={post.image} 
+                  alt="Transformação Invisalign" 
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
+                />
               </div>
 
               {/* Instagram Interaction Bar */}
@@ -105,13 +110,18 @@ export function BeforeAfterSection() {
                   <Bookmark className="w-5 h-5 cursor-pointer" />
                 </div>
 
-                {/* Caption */}
-                <div className="font-body text-sm leading-snug text-foreground/90">
-                  <p>
+                {/* Caption with Line Clamp/Instagram style truncation */}
+                <div className="font-body text-xs leading-snug text-foreground/90">
+                  <p className="line-clamp-[5] overflow-hidden">
                     <span className="font-bold mr-2 text-foreground">dranataliabrainer</span>
-                    {item.text}
+                    {post.text.split('\n').map((line, i) => (
+                      <span key={i}>
+                        {line}
+                        <br />
+                      </span>
+                    ))}
                   </p>
-                  <p className="text-muted-foreground text-[10px] mt-2 italic">Paciente: {item.patient}</p>
+                  <span className="text-muted-foreground text-[10px] mt-1 cursor-pointer hover:underline block">mais...</span>
                 </div>
               </div>
             </div>
