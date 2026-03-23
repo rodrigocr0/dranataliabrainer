@@ -39,7 +39,7 @@ export function CTABanner() {
           </h2>
 
           <p className="font-body text-lg sm:text-xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed drop-shadow-md">
-            Descubra como o <span className="text-gold font-semibold">Invisalign</span> pode transformar seu sorriso sem afetar sua imagem profissional.
+            Descubra como o <span className="text-gold font-semibold">Invisalign</span> pode transformar seu sorriso sem afetar sua imagem profissional. Tudo sendo conduzido por uma das maiores especialistas Invisalign do <span className="text-gold font-semibold">Brasil</span>.
           </p>
 
           <motion.a
