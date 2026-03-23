@@ -190,12 +190,8 @@ export function HeroSection() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-30 h-full flex items-center justify-center">
-        {/* Mobile Logo - Top Left */}
-        <div className="absolute top-6 left-4 lg:hidden">
-          <img src={logoImg} alt="Dra. Natalia Brainer" className="h-7 opacity-90" />
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-4 lg:gap-16 items-center w-full max-w-7xl pt-12 lg:pt-0">
+        {/* Mobile Logo handled inside the column for centering */}
+        <div className="grid lg:grid-cols-2 gap-4 lg:gap-16 items-center w-full max-w-7xl pt-10 lg:pt-0">
           
           {/* Main Content Column */}
           <motion.div
@@ -204,12 +200,17 @@ export function HeroSection() {
             transition={{ duration: 0.8 }}
             className="flex flex-col items-center lg:items-start text-center lg:text-left"
           >
+            {/* 0. Mobile Logo */}
+            <div className="mb-4 lg:hidden">
+              <img src={logoImg} alt="Dra. Natalia Brainer" className="h-9 opacity-90 mx-auto" />
+            </div>
+
             {/* 1. Badge */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-gold/40 rounded-full px-4 py-1.5 mb-5 lg:mb-8 shadow-lg"
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-gold/40 rounded-full px-4 py-1.5 mb-4 lg:mb-8 shadow-lg"
             >
               <Diamond className="w-3.5 h-3.5 text-gold" />
               <span className="text-[10px] sm:text-xs font-body font-bold text-white tracking-[0.2em] uppercase">
@@ -240,7 +241,7 @@ export function HeroSection() {
             </div>
 
             {/* 4. Descriptive Text */}
-            <p className="font-body text-xs sm:text-base lg:text-lg text-white/80 mb-6 lg:mb-10 max-w-[300px] sm:max-w-lg lg:max-w-xl leading-relaxed">
+            <p className="font-body text-[11px] sm:text-base lg:text-lg text-white/80 mb-5 lg:mb-10 max-w-[300px] sm:max-w-lg lg:max-w-xl leading-relaxed">
               O alinhador invisível para quem valoriza a própria imagem. Tecnologia de ponta para transformar seu sorriso de forma extremamente discreta.
             </p>
 
@@ -262,7 +263,7 @@ export function HeroSection() {
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="hidden lg:flex flex-col items-center gap-8 relative"
+            className="hidden lg:flex flex-col items-center gap-10 relative"
           >
             {/* Desktop Logo Above Slider */}
             <motion.div
@@ -271,7 +272,7 @@ export function HeroSection() {
               transition={{ delay: 0.5 }}
               className="mb-2"
             >
-              <img src={logoImg} alt="Dra. Natalia Brainer" className="h-10 opacity-90" />
+              <img src={logoImg} alt="Dra. Natalia Brainer" className="h-14 opacity-95" />
             </motion.div>
 
             <div className="relative w-full">
@@ -287,7 +288,7 @@ export function HeroSection() {
                   </motion.div>
                 )}
               </AnimatePresence>
-              {renderSlider("max-w-md lg:max-w-[480px]")}
+              {renderSlider("max-w-[400px] lg:max-w-[420px]")}
             </div>
           </motion.div>
         </div>
