@@ -133,7 +133,7 @@ export function ComparisonSection() {
             className="mt-16 text-center"
           >
             <p className="font-display italic text-gold text-xl sm:text-2xl font-medium tracking-tight">
-              A elegância mora nos detalhes que ninguém vê.
+              A elegância mora nos detalhes.
             </p>
           </motion.div>
         </div>
