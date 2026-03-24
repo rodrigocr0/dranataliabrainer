@@ -4,7 +4,7 @@ import { HelpCircle, ChevronRight } from 'lucide-react'
 const faqs = [
   {
     q: 'Quanto custa o Invisalign?',
-    a: 'O investimento varia de R$ 12.000 a R$ 25.000, dependendo da complexidade do caso. Oferecemos parcelamento em até 12x sem juros e condições facilitadas. Agende uma consulta para um orçamento detalhado.',
+    a: 'O investimento varia dependendo da complexidade do caso. Oferecemos parcelamento no cartão em até 21x e no boleto em até 24x. Agende uma consulta para um orçamento detalhado.',
   },
   {
     q: 'Quanto tempo leva o tratamento?',
@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     q: 'Vocês aceitam convênio ou parcelamento?',
-    a: 'Oferecemos parcelamento via cartão de crédito e boleto bancário (sob consulta). Sobre convênios, emitimos nota para que você possa solicitar o reembolso diretamente com seu plano.',
+    a: 'Oferecemos parcelamento no cartão de crédito em até 21x (Visa ou Master) e em 18x para qualquer bandeira. Também parcelamos no boleto em até 24x. Só atendemos pelo particular.',
   },
 ]
 

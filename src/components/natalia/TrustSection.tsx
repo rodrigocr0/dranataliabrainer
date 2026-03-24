@@ -6,7 +6,7 @@ export function TrustSection() {
   const credentials = [
     { icon: Diamond, text: 'Invisalign Top Doctor Diamond', pos: 'top-4 -right-6' },
     { icon: GraduationCap, text: '18+ anos de Expertise', pos: 'bottom-16 -left-8' },
-    { icon: Users, text: '1000+ Casos Tratados', pos: 'bottom-4 -right-4' },
+    { icon: Users, text: '500+ Casos Tratados', pos: 'bottom-4 -right-4' },
   ]
 
   return (
@@ -84,7 +84,7 @@ export function TrustSection() {
               <div className="flex items-center gap-3">
                 <Star className="text-gold w-5 h-5 fill-gold" />
                 <div>
-                  <p className="text-foreground font-bold text-lg leading-none">+1000</p>
+                  <p className="text-foreground font-bold text-lg leading-none">+500</p>
                   <p className="text-muted-foreground text-[10px] uppercase tracking-widest mt-1">Casos Atendidos</p>
                 </div>
               </div>

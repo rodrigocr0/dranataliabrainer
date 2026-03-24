@@ -99,7 +99,7 @@ export function FooterSection() {
                 <MapPin className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="font-display font-medium text-lg mb-1 tracking-tight">Torre Business Meireles</h4>
+                <h4 className="font-display font-medium text-lg mb-1 tracking-tight">Pátio Dom Luís - Torre Business l Sl 1501</h4>
                 <p className="font-body text-white/40 leading-relaxed text-sm">
                   Av. Dom Luís, 1200 - sala 1501 - Meireles,<br />
                   Fortaleza - CE, 60160-230

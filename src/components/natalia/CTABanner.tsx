@@ -81,7 +81,7 @@ export function CTABanner() {
           </span>
           
           <h2 className="font-display text-3xl sm:text-5xl lg:text-7xl font-bold text-white mb-8 leading-tight drop-shadow-md lg:whitespace-nowrap">
-            Agende sua Avaliação <span className="text-gold italic">Prime</span> hoje
+            Agende sua consulta hoje
           </h2>
 
           <p className="font-body text-lg sm:text-xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed drop-shadow-md">
