@@ -32,7 +32,7 @@ export function ContactForm() {
     const msg = encodeURIComponent(
       `Olá! Meu nome é ${form.nome}.\nEmail: ${form.email}\nTelefone: ${form.telefone}\nInteresse: ${form.tipo}\n${form.mensagem ? 'Mensagem: ' + form.mensagem : ''}`
     )
-    const whatsappUrl = `https://wa.me/5585999999999?text=${msg}`
+    const whatsappUrl = `https://tintim.link/whatsapp/9634acf3-f59c-4f54-bff8-b2999aeab15c/bddc9850-a67d-4483-9d46-7723f5351099`
 
     // Simulate form submission delay
     setTimeout(() => {

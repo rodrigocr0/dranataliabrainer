@@ -82,7 +82,7 @@ export function HeroSection() {
     };
   }, []);
 
-  const whatsappUrl = "https://api.whatsapp.com/send?phone=5585988991505"
+  const whatsappUrl = "https://tintim.link/whatsapp/9634acf3-f59c-4f54-bff8-b2999aeab15c/bddc9850-a67d-4483-9d46-7723f5351099"
 
   const renderSlider = (className = "") => (
     <div className={`relative aspect-square w-full rounded-[2.5rem] overflow-hidden shadow-[0_25px_55px_rgba(0,0,0,0.6)] select-none border-[3px] border-white/20 ring-1 ring-gold/40 mx-auto ${className}`} style={{ touchAction: 'pan-y' }}>

@@ -19,7 +19,7 @@ export function WhatsAppButton() {
       />
       
       <motion.a
-        href="https://wa.me/5585988991505?text=Olá! Gostaria de agendar uma avaliação."
+        href="https://tintim.link/whatsapp/9634acf3-f59c-4f54-bff8-b2999aeab15c/bddc9850-a67d-4483-9d46-7723f5351099"
         target="_blank"
         rel="noopener noreferrer"
         className="relative bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-shadow cursor-pointer flex items-center justify-center"

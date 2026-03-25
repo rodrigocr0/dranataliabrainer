@@ -13,7 +13,7 @@ const links = [
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const whatsappUrl = "https://api.whatsapp.com/send?phone=5585988991505"
+  const whatsappUrl = "https://tintim.link/whatsapp/9634acf3-f59c-4f54-bff8-b2999aeab15c/bddc9850-a67d-4483-9d46-7723f5351099"
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 200)

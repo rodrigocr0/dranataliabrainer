@@ -72,7 +72,7 @@ export function FAQSection() {
                   {faq.a}
                 </p>
                 <a 
-                  href="https://api.whatsapp.com/send?phone=5585988991505"
+                  href="https://tintim.link/whatsapp/9634acf3-f59c-4f54-bff8-b2999aeab15c/bddc9850-a67d-4483-9d46-7723f5351099"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-auto flex items-center gap-2 text-gold font-body text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-500 hover:gap-3"
@@ -94,7 +94,7 @@ export function FAQSection() {
             Ainda tem alguma dúvida específica sobre o seu caso?
           </p>
           <a 
-            href="https://api.whatsapp.com/send?phone=5585988991505"
+            href="https://tintim.link/whatsapp/9634acf3-f59c-4f54-bff8-b2999aeab15c/bddc9850-a67d-4483-9d46-7723f5351099"
             target="_blank"
             className="inline-flex items-center gap-2 text-gold font-display font-bold text-xl hover:gap-4 transition-all"
           >
