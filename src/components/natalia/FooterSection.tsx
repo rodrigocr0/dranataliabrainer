@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Instagram, MapPin, MessageSquare } from 'lucide-react'
 import logoImg from '../../assets/logo_dra_natalia-webp.webp'
 import bgImage from '../../assets/secao-rodape.webp'
+import { trackClick } from '../../lib/analytics'
 
 export function FooterSection() {
   const currentYear = new Date().getFullYear()
@@ -48,6 +49,7 @@ export function FooterSection() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={trackClick}
                 className="group flex items-center gap-5 transition-all duration-300"
               >
                 <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white/70 group-hover:text-gold group-hover:border-gold/30 transition-all shadow-sm">

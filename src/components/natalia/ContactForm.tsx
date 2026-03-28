@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { Send } from 'lucide-react'
 import { useToast } from '@/hooks/use-toast'
+import { trackClick } from '../../lib/analytics'
 
 export function ContactForm() {
   const { toast } = useToast()
@@ -38,6 +39,7 @@ export function ContactForm() {
     setTimeout(() => {
       setIsLoading(false)
       toast({ title: 'Mensagem enviada!', description: 'Redirecionando para o WhatsApp...' })
+      trackClick()
       window.open(whatsappUrl, '_blank')
     }, 800)
   }

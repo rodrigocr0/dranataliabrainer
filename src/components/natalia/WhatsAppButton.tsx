@@ -1,5 +1,6 @@
 import { MessageCircle } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { trackClick } from '../../lib/analytics'
 
 export function WhatsAppButton() {
   return (
@@ -33,6 +34,7 @@ export function WhatsAppButton() {
         }}
         whileHover={{ scale: 1.15 }}
         whileTap={{ scale: 0.9 }}
+        onClick={trackClick}
         aria-label="Fale conosco pelo WhatsApp"
       >
         <MessageCircle className="w-6 h-6" />

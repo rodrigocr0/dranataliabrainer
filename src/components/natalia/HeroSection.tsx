@@ -5,6 +5,7 @@ import antesImg from '../../assets/antes-hero.webp'
 import depoisImg from '../../assets/depois-hero.webp'
 import videoPoster from '../../assets/tela-preload.webp'
 import logoImg from '../../assets/logo_dra_natalia-webp.webp'
+import { trackClick } from '../../lib/analytics'
 
 declare global {
   namespace JSX {
@@ -257,6 +258,7 @@ export function HeroSection() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={trackClick}
               className="btn-gold !text-white text-sm sm:text-lg px-8 py-4 sm:px-10 sm:py-5 rounded-full font-bold inline-block shadow-[0_15px_40px_rgba(212,175,55,0.3)] tracking-wide"
             >
               Agendar consulta agora

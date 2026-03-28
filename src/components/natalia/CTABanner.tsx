@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import videoPoster from '../../assets/tela-preload.webp'
+import { trackClick } from '../../lib/analytics'
 
 export function CTABanner() {
   const whatsappUrl = "https://tintim.link/whatsapp/9634acf3-f59c-4f54-bff8-b2999aeab15c/bddc9850-a67d-4483-9d46-7723f5351099"
@@ -94,6 +95,7 @@ export function CTABanner() {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={trackClick}
             className="btn-gold inline-flex items-center justify-center px-12 py-6 rounded-full !text-white font-bold text-xl shadow-[0_15px_40px_rgba(212,175,55,0.4)] transition-all uppercase tracking-wider"
           >
             Quero Agendar Minha Consulta

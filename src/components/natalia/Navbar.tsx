@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import logoImg from '../../assets/logo.webp'
+import { trackClick } from '../../lib/analytics'
 
 const links = [
   { label: 'Vantagens', href: '#vantagens' },
@@ -54,6 +55,7 @@ export function Navbar() {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={trackClick}
             className="btn-gold !text-white text-[11px] px-6 py-2.5 rounded-full font-bold uppercase tracking-[0.15em] shadow-[0_8px_20px_rgba(212,175,55,0.2)] transition-all"
           >
             Quero Agendar Minha Consulta
@@ -87,7 +89,7 @@ export function Navbar() {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => setMobileOpen(false)}
+            onClick={() => { setMobileOpen(false); trackClick(); }}
             className="block btn-gold text-center py-4 rounded-full !text-white font-bold uppercase tracking-widest text-sm shadow-xl"
           >
             Quero Agendar Minha Consulta

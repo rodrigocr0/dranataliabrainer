@@ -1,22 +1,22 @@
 import { motion } from 'framer-motion'
-import { Eye, Clock, Sparkles } from 'lucide-react'
+import { UserCheck, Briefcase, ShieldCheck } from 'lucide-react'
 import bgImg from '../../assets/secao-porque-webp.webp'
 
 const cards = [
   {
-    icon: Eye,
-    title: 'Discrição Absoluta',
-    description: 'Mantenha sua autoridade intacta em reuniões e apresentações. O Invisalign é virtualmente imperceptível, eliminando o estigma dos aparelhos metálicos no ambiente corporativo.',
+    icon: UserCheck,
+    title: 'Líderes e Executivos',
+    description: 'Pessoas que entendem que a autoridade começa pela imagem e não aceitam que um aparelho metálico comprometa sua presença em reuniões decisivas.',
   },
   {
-    icon: Clock,
-    title: 'Agenda Corporativa',
-    description: 'Menos tempo no dentista, mais tempo na sua empresa. Consultas espaçadas a cada 6-8 semanas, ideais para rotinas intensas e viagens de negócios.',
+    icon: Briefcase,
+    title: 'Profissionais de Elite',
+    description: 'Aqueles com rotinas intensas que precisam de um tratamento que se adapte à sua agenda, permitindo viagens e reuniões sem interrupções.',
   },
   {
-    icon: Sparkles,
-    title: 'Maestria Diamond',
-    description: 'Transformação planejada por uma Invisalign Top Doctor Diamond. Previsibilidade digital que garante um sorriso impecável com o mínimo de intervenções.',
+    icon: ShieldCheck,
+    title: 'Perfil de Alto Padrão',
+    description: 'Quem não abre mão da excelência e busca o acompanhamento planejado por uma Invisalign Top Doctor Diamond para garantir o resultado perfeito.',
   },
 ]
 
@@ -39,11 +39,10 @@ export function ProblemSection() {
           className="text-center mb-16 lg:mb-20"
         >
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 drop-shadow-lg">
-            Por que os executivos escolhem{' '}
-            <span className="text-gold">Invisalign</span>?
+            Quem escolhe <span className="text-gold">Invisalign</span>?
           </h2>
           <p className="font-body text-lg sm:text-xl text-white/80 max-w-2xl mx-auto drop-shadow-md">
-            A escolha inteligente para quem valoriza imagem e elegância.
+            O tratamento preferido por quem não abre mão da excelência e da autoridade.
           </p>
         </motion.div>
 

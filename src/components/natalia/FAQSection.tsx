@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { HelpCircle, ChevronRight } from 'lucide-react'
+import { trackClick } from '../../lib/analytics'
 
 const faqs = [
   {
@@ -75,6 +76,7 @@ export function FAQSection() {
                   href="https://tintim.link/whatsapp/9634acf3-f59c-4f54-bff8-b2999aeab15c/bddc9850-a67d-4483-9d46-7723f5351099"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={trackClick}
                   className="mt-auto flex items-center gap-2 text-gold font-body text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-500 hover:gap-3"
                 >
                   Saiba mais <ChevronRight className="w-4 h-4" />
@@ -96,6 +98,7 @@ export function FAQSection() {
           <a 
             href="https://tintim.link/whatsapp/9634acf3-f59c-4f54-bff8-b2999aeab15c/bddc9850-a67d-4483-9d46-7723f5351099"
             target="_blank"
+            onClick={trackClick}
             className="inline-flex items-center gap-2 text-gold font-display font-bold text-xl hover:gap-4 transition-all"
           >
             Falar diretamente com um especialista <ChevronRight className="w-5 h-5" />
