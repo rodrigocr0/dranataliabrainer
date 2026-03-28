@@ -1,22 +1,22 @@
 import { motion } from 'framer-motion'
-import { UserCheck, Briefcase, ShieldCheck } from 'lucide-react'
+import { Clock, Brain, ShieldCheck } from 'lucide-react'
 import bgImg from '../../assets/secao-porque-webp.webp'
 
 const cards = [
   {
-    icon: UserCheck,
-    title: 'Líderes e Executivos',
-    description: 'Pessoas que entendem que a autoridade começa pela imagem e não aceitam que um aparelho metálico comprometa sua presença em reuniões decisivas.',
+    icon: Clock,
+    title: 'Quem valoriza o próprio tempo',
+    description: 'Busca um tratamento discreto, que se encaixe na rotina e permita seguir o dia a dia com leveza.',
   },
   {
-    icon: Briefcase,
-    title: 'Profissionais de Elite',
-    description: 'Aqueles com rotinas intensas que precisam de um tratamento que se adapte à sua agenda, permitindo viagens e reuniões sem interrupções.',
+    icon: Brain,
+    title: 'Quem escolhe com consciência',
+    description: 'Prefere decisões bem planejadas e entende que investir com segurança faz toda a diferença no resultado.',
   },
   {
     icon: ShieldCheck,
-    title: 'Perfil de Alto Padrão',
-    description: 'Quem não abre mão da excelência e busca o acompanhamento planejado por uma Invisalign Top Doctor Diamond para garantir o resultado perfeito.',
+    title: 'Quem não abre mão de qualidade',
+    description: 'Valoriza um acompanhamento criterioso, com a experiência de uma Invisalign Top Doctor Diamond, em busca de previsibilidade e excelência.',
   },
 ]
 
@@ -39,7 +39,7 @@ export function ProblemSection() {
           className="text-center mb-16 lg:mb-20"
         >
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 drop-shadow-lg">
-            Quem escolhe <span className="text-gold">Invisalign</span>?
+            Quem escolhe o <span className="text-gold">Invisalign</span>?
           </h2>
           <p className="font-body text-lg sm:text-xl text-white/80 max-w-2xl mx-auto drop-shadow-md">
             O tratamento preferido por quem não abre mão da excelência e da autoridade.
